@@ -2,7 +2,7 @@ CC=g++
 IDIR=include
 SRCDIR=src
 
-EXECUTABLE_NAME=eindopdracht
+EXECUTABLE_NAME=spacewalk
 LIBS=-lncurses
 
 all:
