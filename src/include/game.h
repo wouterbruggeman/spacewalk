@@ -5,6 +5,7 @@
 #include "welcomescreen.h"
 #include "placescreen.h"
 #include "mainscreen.h"
+#include "player.h"
 
 class Game{
 	public:
@@ -27,6 +28,9 @@ class Game{
 		PlaceScreen *_placeScreen = nullptr;
 		MainScreen *_mainScreen = nullptr;
 
+		Board *_board = nullptr;
+		Player *_p1 = nullptr;
+		Player *_p2 = nullptr;
 
 		int _gamePhrase;
 };

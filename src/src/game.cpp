@@ -2,17 +2,29 @@
 
 Game::Game(){
 	_window = new Window();
+
+	_board = new Board(_window);
+	_p1 = new Player(PLAYER_1_NAME);
+	_p2 = new Player(PLAYER_2_NAME);
+
 	_welcomeScreen = new WelcomeScreen(_window);
-	_placeScreen = new PlaceScreen(_window);
+	_placeScreen = new PlaceScreen(_board, _p1, _p2, _window);
 	_mainScreen = new MainScreen(_window);
+
+
 
 	_gamePhrase = 0;
 }
 
 Game::~Game(){
 	delete _window;
+
 	delete _welcomeScreen;
+	delete _placeScreen;
 	delete _mainScreen;
+
+	delete _p1;
+	delete _p2;
 }
 
 void Game::start(){
