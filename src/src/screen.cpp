@@ -7,3 +7,7 @@ Screen::Screen(Window *window){
 Screen::~Screen(){
 
 }
+
+void Screen::draw(){
+
+}

@@ -2,6 +2,8 @@
 #define SCREEN_H
 
 #include "window.h"
+#define MARGIN_X 2
+#define MARGIN_Y 1
 
 class Screen{
 	public:
