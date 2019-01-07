@@ -1,5 +1,9 @@
 #include "mainscreen.h"
 
+MainScreen::MainScreen(Window *window) : Screen(window){
+
+}
+
 void MainScreen::draw(){
 	_window->clear();
 

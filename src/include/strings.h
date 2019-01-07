@@ -6,4 +6,6 @@
 #define PLACE_INFO "In this phrase you'll have to place your spaceships on the planets."
 #define PLACE_NUMBER_ASK "Please enter the number of the planet you want to place the selected spaceship on: "
 
+#define SPACESHIP_TOP = ">"
+
 #endif

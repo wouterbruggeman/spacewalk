@@ -14,8 +14,15 @@ class Window{
 		void redraw();
 		void clear();
 
-		void moveCursor(int x, int y);
+
+		//Text functions
+		void addText(int x, int y, const char *str,
+				int foregroundColor, int backgroundColor,
+				bool centerHorizontal = false);
 		void addText(int x, int y, const char *str, bool centerHorizontal = false);
+
+
+		void moveCursor(int x, int y);
 		bool isRunning();
 		void test();
 

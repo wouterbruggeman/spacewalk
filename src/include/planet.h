@@ -5,7 +5,7 @@
 
 class Planet : public GameObject{
 	public:
-		using GameObject::GameObject;
+		Planet(Window *window);
 		void draw();
 
 	private:

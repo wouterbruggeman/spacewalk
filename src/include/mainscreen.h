@@ -6,7 +6,7 @@
 
 class MainScreen : public Screen{
 	public:
-		using Screen::Screen;
+		MainScreen(Window *window);
 		void draw();
 
 	private:

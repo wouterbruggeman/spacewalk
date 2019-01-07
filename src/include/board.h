@@ -2,13 +2,15 @@
 #define BOARD_H
 
 #include "gameobject.h"
+#include "spaceship.h"
 
 class Board : public GameObject{
 	public:
-		using GameObject::GameObject;
+		Board(Window *window);
 		void draw();
 
 	private:
+		//Vector of spaceships
 
 };
 #endif
