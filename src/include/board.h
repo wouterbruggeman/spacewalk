@@ -10,7 +10,7 @@ class Board : public GameObject{
 		void draw();
 
 	private:
-		//Vector of spaceships
+
 
 };
 #endif

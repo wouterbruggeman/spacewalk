@@ -3,8 +3,11 @@
 PlaceScreen::PlaceScreen(Board *board, Player *p1, Player *p2, Window *window) : Screen(window){
 	_board = board;
 	_board->setLocation(_window->getSizeX() / 2, _window->getSizeY() / 2);
+	_board->setSize(20, 15);
 
-	_shipSelector = new ShipSelector();
+	/*_shipSelector = new ShipSelector();
+	_shipSelector->*/
+	//REPLACE WITH SHIP VIEW
 }
 
 /*~PlaceScreen::PlaceScreen(){
@@ -18,5 +21,5 @@ void PlaceScreen::draw(){
 	_window->addText(MARGIN_X, MARGIN_Y+2, PLACE_NUMBER_ASK, false);
 
 	_board->draw();
-	_shipselector->draw();
+	//_shipselector->draw();
 }
