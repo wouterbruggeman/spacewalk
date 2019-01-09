@@ -13,5 +13,10 @@ void Board::draw(){
 	s.setLocation(_posX, _posY+1);
 	s.draw();
 
+	Planet *planet = new Planet(COLOR_RED_BLACK, _window);
+	planet->setLocation(15,15);
+	planet->draw();
+
+
 	this->drawBorder();
 }

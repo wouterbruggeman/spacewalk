@@ -5,10 +5,10 @@
 
 class Planet : public GameObject{
 	public:
-		Planet(Window *window);
+		Planet(char color, Window *window);
 		void draw();
 
 	private:
-
+		char _color;
 };
 #endif

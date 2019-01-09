@@ -1,9 +1,11 @@
 #include "planet.h"
 
-Planet::Planet(Window *window) : GameObject(window){
-
+Planet::Planet(char color, Window *window) : GameObject(window){
+	this->setSize(3,3);
+	this->_color = color;
 }
 
 void Planet::draw(){
-	_window->addText(_posX, _posY, "planet..", false);
+	_window->addText(_posX+1, _posY+1, "@", this->_color);
+	this->drawBorder();
 }

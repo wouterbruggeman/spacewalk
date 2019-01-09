@@ -3,6 +3,8 @@
 
 #include <cstring>
 
+#define MAX_SPACESHIP_AMOUNT 9
+
 class Player{
 	public:
 		Player(const char *name);

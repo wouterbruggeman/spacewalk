@@ -43,3 +43,19 @@ void GameObject::setSize(int x, int y){
 	_sizeX = x;
 	_sizeY = y;
 }
+
+int GameObject::getPosX(){
+	return this->_posX;
+}
+
+int GameObject::getPosY(){
+	return this->_posY;
+}
+
+int GameObject::getSizeX(){
+	return this->_sizeX;
+}
+
+int GameObject::getSizeY(){
+	return this->_sizeY;
+}

@@ -4,12 +4,12 @@ void WelcomeScreen::draw(){
 	_window->addText(
 			_window->getSizeX() / 2,
 			_window->getSizeY() / 2,
-			WELCOME_MAIN_STR, true
+			WELCOME_MAIN_STR, COLOR_WHITE_BLACK, true
 			);
 	_window->addText(
 			_window->getSizeX() / 2,
 			(_window->getSizeY() / 2) + 1,
-			WELCOME_SUB_STR, true
+			WELCOME_SUB_STR, COLOR_WHITE_BLACK, true
 			);
 
 }

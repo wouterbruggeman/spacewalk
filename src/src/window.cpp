@@ -10,6 +10,14 @@ Window::~Window(){
 
 void Window::start(){
 	initscr();
+	cbreak();
+
+	//Dont show when a user is typing
+	noecho();
+
+	//Disable the cursor
+	curs_set(0);
+
 	_sizeX = COLS;
 	_sizeY = LINES;
 
@@ -19,6 +27,8 @@ void Window::start(){
 
 	//Change the status of the current window
 	_isRunning = true;
+
+	this->pairColors();
 }
 
 /* Stop the current window */
@@ -40,25 +50,18 @@ void Window::moveCursor(int x, int y){
 }
 
 void Window::addText(int x, int y, const char *str,
-		int foregroundColor, int backgroundColor,
-		bool centerHorizontal){
+		char color, bool centerHorizontal){
 
-	init_pair(1, foregroundColor, backgroundColor);
-	attron(COLOR_PAIR(1));
+	attron(COLOR_PAIR(color));
 
 	//Add the text
-	this->addText(x, y, str, centerHorizontal);
-
-	attroff(COLOR_PAIR(1));
-}
-
-void Window::addText(int x, int y, const char *str, bool centerHorizontal){
 	int posX = x;
 	if(centerHorizontal){
 		posX = x - (strlen(str) / 2);
 	}
 	mvaddstr(y, posX, str);
 
+	attroff(COLOR_PAIR(color));
 }
 
 bool Window::isRunning(){
@@ -71,4 +74,11 @@ int Window::getSizeX(){
 
 int Window::getSizeY(){
 	return _sizeY;
+}
+
+void Window::pairColors(){
+	init_pair(COLOR_WHITE_BLACK, COLOR_WHITE, COLOR_BLACK);
+	init_pair(COLOR_BLUE_BLACK, COLOR_BLUE, COLOR_BLACK);
+	init_pair(COLOR_GREEN_BLACK, COLOR_GREEN, COLOR_BLACK);
+	init_pair(COLOR_RED_BLACK, COLOR_RED, COLOR_BLACK);
 }

@@ -15,6 +15,11 @@ class GameObject{
 		void setLocation(int x, int y);
 		void setSize(int x, int y);
 		void draw();
+
+		int getPosX();
+		int getPosY();
+		int getSizeX();
+		int getSizeY();
 	private:
 
 	protected:
