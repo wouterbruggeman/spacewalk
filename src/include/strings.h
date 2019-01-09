@@ -11,5 +11,8 @@
 #define PLAYER_1_NAME "Player 1"
 #define PLAYER_2_NAME "Player 2"
 
+#define INFO_AUTHOR "Wouter Bruggeman"
+#define INFO_VERSION "spacewalk v0.1"
+
 
 #endif
