@@ -1,9 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <cstring>
+#include <string.h>
 
 #define MAX_SPACESHIP_AMOUNT 9
+#define PLAYERNAME_SIZE 25
 
 class Player{
 	public:
@@ -14,7 +15,7 @@ class Player{
 		void getName(char *str);
 
 	private:
-		char _name[50];
+		char _name[PLAYERNAME_SIZE];
 
 };
 #endif

@@ -18,3 +18,7 @@ void MainScreen::draw(){
 			"Placeholder", true
 			);
 }
+
+void MainScreen::handleInput(){
+	char c = getch();
+}

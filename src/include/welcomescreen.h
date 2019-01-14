@@ -12,7 +12,7 @@ class WelcomeScreen : public Screen{
 		WelcomeScreen(Player *p1, Player *p2, Window *window);
 		~WelcomeScreen();
 		void draw();
-		void inputUsernames();
+		void handleInput();
 	private:
 		NameInput *_nameInput;
 		Player *_p1;

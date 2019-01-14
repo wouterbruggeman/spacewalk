@@ -11,5 +11,5 @@ void Player::setName(const char *name){
 }
 
 void Player::getName(char *str){
-	strcpy(_name, str);
+	strcpy(str, _name);
 }

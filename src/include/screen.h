@@ -12,6 +12,7 @@ class Screen{
 
 		void draw();
 		bool isReady();
+		void handleInput();
 	protected:
 		Window *_window;
 		bool _isReady = false;

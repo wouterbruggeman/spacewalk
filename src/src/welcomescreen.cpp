@@ -49,8 +49,12 @@ void WelcomeScreen::draw(){
 	}
 }
 
-//Ask for the usernames
-void WelcomeScreen::inputUsernames(){
-	_nameInput = new NameInput(_window);
-	this->draw();
+void WelcomeScreen::handleInput(){
+	char c = getch();
+
+	if(c == ' '){
+		//Ask for the usernames
+		_nameInput = new NameInput(_window);
+		this->draw();
+	}
 }

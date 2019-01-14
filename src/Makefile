@@ -8,6 +8,7 @@ LIBS=-lncurses
 all:
 	reset
 	$(CC) -I $(IDIR) $(SRCDIR)/* -o $(EXECUTABLE_NAME) $(LIBS)
+	./$(EXECUTABLE_NAME)
 clean:
 	rm *.o $(EXECUTABLE_NAME)
 

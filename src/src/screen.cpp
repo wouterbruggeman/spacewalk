@@ -15,3 +15,7 @@ void Screen::draw(){
 bool Screen::isReady(){
 	return _isReady;
 }
+
+void Screen::handleInput(){
+
+}

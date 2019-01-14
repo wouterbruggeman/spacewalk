@@ -3,8 +3,9 @@
 
 #include "gameobject.h"
 #include "player.h"
+#include "strings.h"
 
-#define SHIPVIEW_SIZE_X 14
+#define SHIPVIEW_SIZE_X 20
 
 class ShipView : public GameObject{
 	public:

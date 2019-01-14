@@ -8,5 +8,5 @@ ShipView::ShipView(Player *p1, Player *p2, Window *window) : GameObject(window){
 
 void ShipView::draw(){
 	this->drawBorder();
-	_window->addText(_posX + 2, _posY + 1, "SpaceShips");
+	_window->addText(_posX + 2, _posY + 1, SHIPVIEW_TITLE, COLOR_BLUE_BLACK);
 }

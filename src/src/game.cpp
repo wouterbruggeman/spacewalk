@@ -11,8 +11,6 @@ Game::Game(){
 	_placeScreen = new PlaceScreen(_board, _p1, _p2, _window);
 	_mainScreen = new MainScreen(_window);
 
-
-
 	_gamePhrase = 0;
 }
 
@@ -48,10 +46,17 @@ bool Game::isRunning(){
 }
 
 void Game::handleKeyboardInput(){
-	char c = getch();
-
-	if((_gamePhrase == 0) && (c == ' ')){
-		_welcomeScreen->inputUsernames();
+	//Let the screen handle the input
+	switch (_gamePhrase){
+		case 0:
+			_welcomeScreen->handleInput();
+			break;
+		case 1:
+			_placeScreen->handleInput();
+			break;
+		case 2:
+			_mainScreen->handleInput();
+			break;
 	}
 }
 

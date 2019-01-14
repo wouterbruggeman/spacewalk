@@ -5,9 +5,11 @@
 #include <cstring>
 
 #define COLOR_WHITE_BLACK 1
-#define COLOR_BLUE_BLACK 2
-#define COLOR_GREEN_BLACK 3
-#define COLOR_RED_BLACK 4
+#define COLOR_BLACK_WHITE 2
+#define COLOR_RED_BLACK 3
+#define COLOR_GREEN_BLACK 4
+#define COLOR_BLUE_BLACK 5
+#define COLOR_YELLOW_BLACK 6
 
 class Window{
 	public:

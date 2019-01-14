@@ -8,6 +8,7 @@ class MainScreen : public Screen{
 	public:
 		MainScreen(Window *window);
 		void draw();
+		void handleInput();
 	private:
 
 };
