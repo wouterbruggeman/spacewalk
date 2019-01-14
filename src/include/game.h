@@ -15,11 +15,12 @@ class Game{
 		void start();
 		void stop();
 		void loop();
-		void draw();
 		bool isRunning();
 	private:
 		//Functions
 		void handleKeyboardInput();
+		void handleGamePhrases();
+		void draw();
 
 		//Variables
 		bool _isRunning = true;

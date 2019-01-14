@@ -46,7 +46,7 @@ void Window::clear(){
 }
 
 void Window::moveCursor(int x, int y){
-
+	curs_set(1);
 }
 
 void Window::addText(int x, int y, const char *str,
@@ -62,6 +62,14 @@ void Window::addText(int x, int y, const char *str,
 	mvaddstr(y, posX, str);
 
 	attroff(COLOR_PAIR(color));
+}
+
+char* Window::getString(int x, int y){
+	echo();
+	char *str;
+	mvgetstr(y,x,str);
+	noecho();
+	return str;
 }
 
 bool Window::isRunning(){

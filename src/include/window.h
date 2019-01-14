@@ -22,11 +22,10 @@ class Window{
 		//Text functions
 		void addText(int x, int y, const char *str,
 				char color = COLOR_WHITE_BLACK, bool centerHorizontal = false);
-
+		char* getString(int x, int y);
 
 		void moveCursor(int x, int y);
 		bool isRunning();
-		void test();
 
 		int getSizeX();
 		int getSizeY();

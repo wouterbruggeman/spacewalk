@@ -4,10 +4,10 @@ Game::Game(){
 	_window = new Window();
 
 	_board = new Board(_window);
-	_p1 = new Player(PLAYER_1_NAME);
-	_p2 = new Player(PLAYER_2_NAME);
+	_p1 = new Player();
+	_p2 = new Player();
 
-	_welcomeScreen = new WelcomeScreen(_window);
+	_welcomeScreen = new WelcomeScreen(_p1, _p2, _window);
 	_placeScreen = new PlaceScreen(_board, _p1, _p2, _window);
 	_mainScreen = new MainScreen(_window);
 
@@ -32,9 +32,37 @@ void Game::start(){
 	this->draw();
 }
 
+void Game::stop(){
+	_window->stop();
+	_isRunning = false;
+}
+
 void Game::loop(){
 	this->handleKeyboardInput();
+	this->handleGamePhrases();
 	this->draw();
+}
+
+bool Game::isRunning(){
+	return _isRunning;
+}
+
+void Game::handleKeyboardInput(){
+	char c = getch();
+
+	if((_gamePhrase == 0) && (c == ' ')){
+		_welcomeScreen->inputUsernames();
+	}
+}
+
+void Game::handleGamePhrases(){
+	if((_gamePhrase == 0) && _welcomeScreen->isReady()){
+		_gamePhrase++;
+	}else if((_gamePhrase == 1) && _placeScreen->isReady()){
+		_gamePhrase++;
+	}else if((_gamePhrase == 2) && _mainScreen->isReady()){
+		_gamePhrase++;
+	}
 }
 
 void Game::draw(){
@@ -53,21 +81,4 @@ void Game::draw(){
 	}
 
 	_window->redraw();
-}
-
-void Game::stop(){
-	_window->stop();
-	_isRunning = false;
-}
-
-bool Game::isRunning(){
-	return _isRunning;
-}
-
-void Game::handleKeyboardInput(){
-	char c = getch();
-
-	if((_gamePhrase == 0) && (c == ' ')){
-		_gamePhrase++;
-	}
 }

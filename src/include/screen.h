@@ -11,7 +11,9 @@ class Screen{
 		virtual ~Screen();
 
 		void draw();
+		bool isReady();
 	protected:
 		Window *_window;
+		bool _isReady = false;
 };
 #endif

@@ -1,11 +1,13 @@
 #include "player.h"
 
-Player::Player(const char *name){
-
+Player::Player(){
 }
 
 Player::~Player(){
-	delete _name;
+}
+
+void Player::setName(const char *name){
+	strcpy(_name, name);
 }
 
 void Player::getName(char *str){

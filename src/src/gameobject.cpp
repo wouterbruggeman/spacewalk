@@ -28,6 +28,8 @@ void GameObject::drawBorder(){
 				&& ((x == this->_posX) || (x == this->_posX - 1 + this->_sizeX))
 				){
 					_window->addText(x, y, BORDER_VERTICAL);
+				}else{
+					_window->addText(x,y, " ");
 				}
 			}
 		}

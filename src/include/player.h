@@ -7,13 +7,14 @@
 
 class Player{
 	public:
-		Player(const char *name);
+		Player();
 		~Player();
 
+		void setName(const char *name);
 		void getName(char *str);
 
 	private:
-		char *_name;
+		char _name[50];
 
 };
 #endif

@@ -11,3 +11,7 @@ Screen::~Screen(){
 void Screen::draw(){
 
 }
+
+bool Screen::isReady(){
+	return _isReady;
+}

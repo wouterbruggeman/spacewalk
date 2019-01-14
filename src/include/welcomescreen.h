@@ -3,14 +3,19 @@
 
 #include "window.h"
 #include "screen.h"
-#include "string.h"
+#include "player.h"
+#include "nameinput.h"
+//#include "string.h"
 
 class WelcomeScreen : public Screen{
 	public:
-		using Screen::Screen;
+		WelcomeScreen(Player *p1, Player *p2, Window *window);
+		~WelcomeScreen();
 		void draw();
-
+		void inputUsernames();
 	private:
-
+		NameInput *_nameInput;
+		Player *_p1;
+		Player *_p2;
 };
 #endif
