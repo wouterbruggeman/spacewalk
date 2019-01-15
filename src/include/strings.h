@@ -12,11 +12,14 @@
 
 #define PLACE_NUMBER_ASK "Please enter the number of the planet where you would like to place the selected spaceship on:"
 
-#define SPACESHIP_TOP ">"
 #define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"
 
 #define INFO_AUTHOR "Wouter Bruggeman"
 #define INFO_VERSION "spacewalk v0.2"
+
+
+#define SPACESHIP_TOP_CHAR ">"
+#define SPACESHIP_OTHER_CHAR ">"
 
 #endif

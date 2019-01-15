@@ -12,14 +12,17 @@ void PlayerView::drawMinimal(){
 	char *playerName;
 	int textColor = COLOR_WHITE_BLACK;
 
+	//Check player 1
 	if(this->_p1 == this->_activePlayer){
 		textColor = COLOR_BLACK_WHITE;
 	}
 	this->_p1->getName(playerName);
 	_window->addText(_posX + 2, _posY + 3, playerName, textColor);
 
+	//reset color
 	textColor = COLOR_WHITE_BLACK;
 
+	//Check player2
 	if(this->_p2 == this->_activePlayer){
 		textColor = COLOR_BLACK_WHITE;
 	}

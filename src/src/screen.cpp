@@ -1,6 +1,7 @@
 #include "screen.h"
 
-Screen::Screen(Window *window){
+Screen::Screen(GameData *gameData, Window *window){
+	_gameData = gameData;
 	_window = window;
 }
 
@@ -12,10 +13,10 @@ void Screen::draw(){
 
 }
 
-bool Screen::isReady(){
-	return _isReady;
+void Screen::handleInput(){
+
 }
 
-void Screen::handleInput(){
+void Screen::nextScreen(){
 
 }

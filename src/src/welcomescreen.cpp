@@ -1,8 +1,7 @@
 #include "welcomescreen.h"
 
-WelcomeScreen::WelcomeScreen(Player *p1, Player *p2, Window *window) : Screen(window){
-	_p1 = p1;
-	_p2 = p2;
+WelcomeScreen::WelcomeScreen(GameData *gameData, Window *window)
+	: Screen(gameData, window){
 }
 
 WelcomeScreen::~WelcomeScreen(){
@@ -37,15 +36,15 @@ void WelcomeScreen::draw(){
 		//Ask the name for player 1
 		_nameInput->setMessage(WELCOME_ENTER_NAME_1);
 		_nameInput->draw();
-		_p1->setName(_nameInput->getString());
+		_gameData->p1->setName(_nameInput->getString());
 
 		//Ask the name for player 2
 		_nameInput->setMessage(WELCOME_ENTER_NAME_2);
 		_nameInput->draw();
-		_p2->setName(_nameInput->getString());
+		_gameData->p2->setName(_nameInput->getString());
 
 		delete _nameInput;
-		_isReady = true;
+		this->nextScreen();
 	}
 }
 
@@ -57,4 +56,8 @@ void WelcomeScreen::handleInput(){
 		_nameInput = new NameInput(_window);
 		this->draw();
 	}
+}
+
+void WelcomeScreen::nextScreen(){
+	_gameData->currentScreen = new PlaceScreen(_gameData, _window);
 }

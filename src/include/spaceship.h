@@ -6,6 +6,8 @@
 
 #define MAX_SPACESHIP_SIZE 4
 
+class Player;
+
 class SpaceShip : public GameObject{
 	public:
 		SpaceShip(int size, Player *owner, Window *window);

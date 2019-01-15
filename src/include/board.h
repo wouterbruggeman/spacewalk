@@ -2,7 +2,6 @@
 #define BOARD_H
 
 #include "gameobject.h"
-#include "spaceship.h"
 #include "planet.h"
 
 class Board : public GameObject{

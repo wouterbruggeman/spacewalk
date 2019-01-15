@@ -2,19 +2,23 @@
 #define SCREEN_H
 
 #include "window.h"
+#include "gamedata.h"
+
 #define MARGIN_X 2
 #define MARGIN_Y 1
 
+struct GameData;
+
 class Screen{
 	public:
-		Screen(Window *window);
+		Screen(GameData *gameData, Window *window);
 		virtual ~Screen();
 
-		void draw();
-		bool isReady();
-		void handleInput();
+		virtual void draw();
+		virtual void nextScreen();
+		virtual void handleInput();
 	protected:
 		Window *_window;
-		bool _isReady = false;
+		GameData *_gameData;
 };
 #endif
