@@ -10,6 +10,7 @@
 #define COLOR_GREEN_BLACK 4
 #define COLOR_BLUE_BLACK 5
 #define COLOR_YELLOW_BLACK 6
+#define COLOR_BLACK_GREEN 7
 
 class Window{
 	public:

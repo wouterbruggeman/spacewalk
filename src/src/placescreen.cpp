@@ -4,8 +4,8 @@ PlaceScreen::PlaceScreen(GameData *gameData, Window *window)
 	: Screen(gameData, window){
 
 	//Create views
-	_shipView = new ShipView(_gameData->p1, _gameData->p2, window);
-	_playerView = new PlayerView(gameData->p1, _gameData->p2, window);
+	_shipView = new ShipView(_gameData, window);
+	_playerView = new PlayerView(_gameData, window);
 
 	//Set view size and location
 	_shipView->setSize(SHIPVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);

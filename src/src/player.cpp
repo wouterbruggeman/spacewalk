@@ -6,12 +6,14 @@ Player::Player(Window *window){
 
 	//Initialize spaceships
 	for(int i = 0; i < MAX_SPACESHIP_AMOUNT; i++){
-		this->_spaceShips[i] = new SpaceShip(SpaceShip::LARGE, this, this->_window);
+		_spaceShips[i] = new SpaceShip(SpaceShip::LARGE, this, _window);
 	}
 }
 
 Player::~Player(){
-	//TOOD: forloop to delete each spaceship
+	for(int i = 0; i < MAX_SPACESHIP_AMOUNT; i++){
+		delete _spaceShips[i];
+	}
 }
 
 void Player::setName(const char *name){
@@ -20,4 +22,8 @@ void Player::setName(const char *name){
 
 void Player::getName(char *str){
 	strcpy(str, _name);
+}
+
+SpaceShip* Player::getSpaceShip(int index){
+	return _spaceShips[index];
 }

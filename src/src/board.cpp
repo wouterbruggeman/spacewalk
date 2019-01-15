@@ -4,6 +4,10 @@ Board::Board(Window *window) : GameObject(window){
 
 }
 
+Board::~Board(){
+
+}
+
 void Board::draw(){
 	this->drawBorder();
 	//_window->addText(_posX, _posY, "board..", false);

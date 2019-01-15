@@ -8,7 +8,7 @@
 
 #define PLACE_INFO_1 "In this phrase you'll have to place your spaceships on the planets."
 #define PLACE_INFO_2 "You'll start with your biggest spaceship, which can be seen in the "
-#define PLACE_INFO_3 "'SpaceShips' panel at the right side of your screen"
+#define PLACE_INFO_3 "'SpaceShips' panel at the right side of your screen."
 
 #define PLACE_NUMBER_ASK "Please enter the number of the planet where you would like to place the selected spaceship on:"
 
@@ -20,6 +20,6 @@
 
 
 #define SPACESHIP_TOP_CHAR ">"
-#define SPACESHIP_OTHER_CHAR ">"
+#define SPACESHIP_OTHER_CHAR "="
 
 #endif

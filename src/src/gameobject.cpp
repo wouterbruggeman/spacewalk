@@ -9,6 +9,32 @@ GameObject::~GameObject(){
 
 }
 
+void GameObject::setLocation(int x, int y){
+	_posX = x;
+	_posY = y;
+}
+
+void GameObject::setSize(int x, int y){
+	_sizeX = x;
+	_sizeY = y;
+}
+
+int GameObject::getPosX(){
+	return this->_posX;
+}
+
+int GameObject::getPosY(){
+	return this->_posY;
+}
+
+int GameObject::getSizeX(){
+	return this->_sizeX;
+}
+
+int GameObject::getSizeY(){
+	return this->_sizeY;
+}
+
 void GameObject::drawBorder(){
 	for(int y = this->_posY; y < (this->_posY + this->_sizeY); y++){
 		for(int x = this->_posX; x < (this->_posX + this->_sizeX); x++){
@@ -36,28 +62,4 @@ void GameObject::drawBorder(){
 	}
 }
 
-void GameObject::setLocation(int x, int y){
-	_posX = x;
-	_posY = y;
-}
 
-void GameObject::setSize(int x, int y){
-	_sizeX = x;
-	_sizeY = y;
-}
-
-int GameObject::getPosX(){
-	return this->_posX;
-}
-
-int GameObject::getPosY(){
-	return this->_posY;
-}
-
-int GameObject::getSizeX(){
-	return this->_sizeX;
-}
-
-int GameObject::getSizeY(){
-	return this->_sizeY;
-}

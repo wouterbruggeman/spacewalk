@@ -10,8 +10,11 @@ class Player;
 
 class SpaceShip : public GameObject{
 	public:
-		SpaceShip(int size, Player *owner, Window *window);
-		void draw();
+		SpaceShip(unsigned char size, Player *owner, Window *window);
+		void draw(bool selected = false);
+		void draw(int x, int y, bool selected = false);
+		void destroy();
+		bool isDestroyed();
 
 		enum Size{
 			SIZE_UNSET = 0,
@@ -21,7 +24,8 @@ class SpaceShip : public GameObject{
 		};
 
 	private:
-		int _size;
+		unsigned char _size;
+		bool _destroyed;
 		Player *_owner;
 
 };

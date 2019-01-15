@@ -17,6 +17,7 @@ class Player{
 
 		void setName(const char *name);
 		void getName(char *str);
+		SpaceShip* getSpaceShip(int index);
 
 	private:
 		//Variables

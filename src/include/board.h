@@ -7,10 +7,11 @@
 class Board : public GameObject{
 	public:
 		Board(Window *window);
+		~Board();
 		void draw();
 
 	private:
-
+		//Planet *_planets;
 
 };
 #endif
