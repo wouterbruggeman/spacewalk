@@ -2,24 +2,22 @@
 
 SpaceShip::SpaceShip(unsigned char size, int color, int colorSelected,
 	Player *owner, Window *window)
-	: GameObject(window), SelectableObject(color, colorSelected)
+	: GameObject(window),
+	SelectableObject(color, colorSelected)
 {
 	_size = size;
 	_owner = owner;
 	_state = SpaceShip::UNPLACED;
 }
 
-void SpaceShip::draw(bool selected){
-	this->draw(_posX, _posY, selected);
+void SpaceShip::draw(){
+	this->draw(_posX, _posY);
 }
 
-void SpaceShip::draw(int x, int y, bool selected){
+void SpaceShip::draw(int x, int y){
 	//size determines the amount of '='
 
-	int color = _owner->getColor(false);
-	if(selected){
-		color = _owner->getColor(true);
-	}
+	int color = _owner->getColor();
 
 	int i = 0;
 	for(; i < _size; i++){

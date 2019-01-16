@@ -19,7 +19,8 @@ void ShipView::draw(){
 		//If ship is not placed yet.
 		if(s->getState() == SpaceShip::UNPLACED){
 			//Draw the spaceship
-			s->draw(_posX + 2, _posY + 3 + i, (i==0));
+			s->setSelected(i==0);
+			s->draw(_posX + 2, _posY + 3 + i);
 		}
 	}
 }

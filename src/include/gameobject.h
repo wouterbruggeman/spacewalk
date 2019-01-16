@@ -14,7 +14,7 @@ class GameObject{
 
 		void setLocation(int x, int y);
 		void setSize(int x, int y);
-		void draw();
+		virtual void draw() = 0;
 		void draw(int x, int y);
 
 		int getPosX();

@@ -14,8 +14,8 @@ class SpaceShip : public GameObject, public SelectableObject{
 	public:
 		SpaceShip(unsigned char size, int color, int colorSelected,
 			Player *owner, Window *window);
-		void draw(bool selected = false);
-		void draw(int x, int y, bool selected = false);
+		void draw();
+		void draw(int x, int y);
 		void setState(unsigned char state);
 		unsigned char getState();
 

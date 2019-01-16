@@ -8,13 +8,17 @@ SelectableObject::SelectableObject(int color, int colorSelected){
 
 SelectableObject::~SelectableObject(){}
 
-int SelectableObject::getColor(bool selected){
-	if(selected){
+int SelectableObject::getColor(){
+	if(_selected){
 		return _colorSelected;
 	}
 	return _color;
 }
 
-bool SelectableObject::getSelected(){
+void SelectableObject::setSelected(bool state){
+	_selected = state;
+}
+
+bool SelectableObject::isSelected(){
 	return _selected;
 }

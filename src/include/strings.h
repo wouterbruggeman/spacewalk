@@ -16,7 +16,7 @@
 #define SHIPVIEW_TITLE "Spaceships:"
 
 #define INFO_AUTHOR "Wouter Bruggeman"
-#define INFO_VERSION "spacewalk v0.2"
+#define INFO_VERSION "spacewalk v0.3"
 
 
 #define SPACESHIP_TOP_CHAR ">"

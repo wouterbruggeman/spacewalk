@@ -9,14 +9,13 @@ class SelectableObject{
 		//but inheriting classes do not need to implement the function
 		virtual ~SelectableObject() = 0;
 
-		int getColor(bool selected);
+		int getColor();
 		void setSelected(bool state);
-		bool getSelected();
+		bool isSelected();
 
 	private:
 		int _color;
 		int _colorSelected;
-
 		bool _selected;
 };
 #endif
