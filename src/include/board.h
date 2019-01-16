@@ -12,6 +12,7 @@ class Board : public GameObject{
 		Board(Window *window);
 		~Board();
 		void draw();
+		void initBodies();
 
 	private:
 		AstronomicalBody *_bodies[AMOUNT_OF_BODIES];

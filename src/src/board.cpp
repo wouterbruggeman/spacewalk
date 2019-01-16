@@ -20,10 +20,17 @@ Board::~Board(){
 	}
 }
 
+void Board::initBodies(){
+	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
+		_bodies[i]->setLocation(_posX + 3 + (i * 2 * _bodies[i]->getSizeX()), _posY + 1);
+	}
+
+}
+
 void Board::draw(){
 	this->drawBorder();
 
 	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
-
+		_bodies[i]->draw();
 	}
 }

@@ -20,6 +20,8 @@ PlaceScreen::PlaceScreen(GameData *gameData, Window *window)
 
 	_gameData->board->setLocation(MARGIN_X, _window->getSizeY() / 2);
 	_gameData->board->setSize(_window->getSizeX() - (2 * MARGIN_X), (_window->getSizeY() / 2));
+
+	_gameData->board->initBodies();
 }
 
 PlaceScreen::~PlaceScreen(){

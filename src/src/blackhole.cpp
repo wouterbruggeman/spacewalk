@@ -6,5 +6,4 @@ BlackHole::BlackHole(Window *window) : AstronomicalBody(window){
 
 void BlackHole::draw(){
 	this->drawBorder();
-	_window->addText(_posX+1, _posY+1, "  ", COLOR_WHITE_BLACK);
 }
