@@ -3,8 +3,9 @@
 
 #include "gameobject.h"
 #include "selectableobject.h"
+#include "astronomicalbody.h"
 
-class Planet : public GameObject, public SelectableObject{
+class Planet : public AstronomicalBody, public SelectableObject{
 	public:
 		Planet(int color, int colorSelected, Window *window);
 		void draw();

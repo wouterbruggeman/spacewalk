@@ -1,8 +1,8 @@
 #include "planet.h"
 
-Planet::Planet(int color, int colorSelected, Window *window)
-	: GameObject(window),
-	SelectableObject(color, colorSelected)
+Planet::Planet(int color, int colorSelected, Window *window) :
+	SelectableObject(color, colorSelected),
+	AstronomicalBody(window)
 {
 	this->setSize(4,3);
 }

@@ -22,7 +22,7 @@ Player::Player(int color, int colorSelected, Window *window)
 }
 
 Player::~Player(){
-	for(int i = 0; i < MAX_SPACESHIP_AMOUNT; i++){
+	for(int i = 0; i < SPACESHIP_AMOUNT; i++){
 		delete _spaceShips[i];
 	}
 }

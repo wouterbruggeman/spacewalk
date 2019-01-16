@@ -6,7 +6,7 @@
 #include "spaceship.h"
 #include "selectableobject.h"
 
-#define MAX_SPACESHIP_AMOUNT 9
+#define SPACESHIP_AMOUNT 9
 #define PLAYERNAME_SIZE 25
 
 class SpaceShip;
@@ -25,7 +25,7 @@ class Player : public SelectableObject{
 		Window *_window;
 
 		char _name[PLAYERNAME_SIZE];
-		SpaceShip *_spaceShips[MAX_SPACESHIP_AMOUNT];
+		SpaceShip *_spaceShips[SPACESHIP_AMOUNT];
 
 
 };

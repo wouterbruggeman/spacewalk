@@ -2,23 +2,28 @@
 
 Board::Board(Window *window) : GameObject(window){
 
+	//Create planets and black holes.
+	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
+		//Every 7th instance is a blackhole
+		if((i % 7) == 0){
+			_bodies[i] = new BlackHole(_window);
+		}else{
+			_bodies[i] = new Planet(COLOR_WHITE_BLACK, COLOR_RED_BLACK, _window);
+		}
+	}
 }
 
 Board::~Board(){
-
+	//Delete all the bodies
+	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
+		delete _bodies[i];
+	}
 }
 
 void Board::draw(){
 	this->drawBorder();
-	//_window->addText(_posX, _posY, "board..", false);
 
-	/*Player *p1 = new Player("Player 1");
+	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
 
-	SpaceShip s = SpaceShip(5, p1, _window);
-	s.setLocation(_posX, _posY+1);
-	s.draw();
-
-	Planet *planet = new Planet(COLOR_RED_BLACK, _window);
-	planet->setLocation(15,15);
-	planet->draw();*/
+	}
 }

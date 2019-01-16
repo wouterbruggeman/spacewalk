@@ -3,6 +3,9 @@
 
 #include "gameobject.h"
 #include "planet.h"
+#include "blackhole.h"
+
+#define AMOUNT_OF_BODIES 14
 
 class Board : public GameObject{
 	public:
@@ -11,7 +14,7 @@ class Board : public GameObject{
 		void draw();
 
 	private:
-		//Planet *_planets;
+		AstronomicalBody *_bodies[AMOUNT_OF_BODIES];
 
 };
 #endif

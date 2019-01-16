@@ -13,7 +13,7 @@ void ShipView::draw(){
 	_window->addText(_posX + 2, _posY + 1, SHIPVIEW_TITLE, COLOR_BLUE_BLACK);
 
 	//Get all ships from this player
-	for(int i = 0; i < MAX_SPACESHIP_AMOUNT; i++){
+	for(int i = 0; i < SPACESHIP_AMOUNT; i++){
 		SpaceShip *s = _gameData->activePlayer->getSpaceShip(i);
 
 		//If ship is not placed yet.
