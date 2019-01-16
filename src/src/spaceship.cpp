@@ -1,9 +1,12 @@
 #include "spaceship.h"
 
-SpaceShip::SpaceShip(unsigned char size, Player *owner, Window *window) : GameObject(window){
+SpaceShip::SpaceShip(unsigned char size, int color, int colorSelected,
+	Player *owner, Window *window)
+	: GameObject(window), SelectableObject(color, colorSelected)
+{
 	_size = size;
 	_owner = owner;
-	_destroyed = false;
+	_state = SpaceShip::UNPLACED;
 }
 
 void SpaceShip::draw(bool selected){
@@ -13,9 +16,9 @@ void SpaceShip::draw(bool selected){
 void SpaceShip::draw(int x, int y, bool selected){
 	//size determines the amount of '='
 
-	int color = COLOR_GREEN_BLACK;
+	int color = _owner->getColor(false);
 	if(selected){
-		color = COLOR_BLACK_GREEN;
+		color = _owner->getColor(true);
 	}
 
 	int i = 0;
@@ -25,10 +28,10 @@ void SpaceShip::draw(int x, int y, bool selected){
 	_window->addText(x + i, y, SPACESHIP_TOP_CHAR, color);
 }
 
-void SpaceShip::destroy(){
-	_destroyed = true;
+void SpaceShip::setState(unsigned char state){
+	_state = state;
 }
 
-bool SpaceShip::isDestroyed(){
-	return _destroyed;
+unsigned char SpaceShip::getState(){
+	return _state;
 }

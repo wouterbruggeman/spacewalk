@@ -9,22 +9,15 @@ void PlayerView::drawMinimal(){
 
 	//Draw player names
 	char *playerName;
-	int textColor = COLOR_WHITE_BLACK;
+	int textColor;
 
-	//Check player 1
-	if(_gameData->p1 == _gameData->activePlayer){
-		textColor = COLOR_BLACK_WHITE;
-	}
+	//Draw player 1
+	textColor = _gameData->p1->getColor(_gameData->p1 == _gameData->activePlayer);
 	_gameData->p1->getName(playerName);
 	_window->addText(_posX + 2, _posY + 3, playerName, textColor);
 
-	//reset color
-	textColor = COLOR_WHITE_BLACK;
-
-	//Check player2
-	if(_gameData->p2 == _gameData->activePlayer){
-		textColor = COLOR_BLACK_WHITE;
-	}
+	//Draw player2
+	textColor = _gameData->p2->getColor(_gameData->p2 == _gameData->activePlayer);
 	_gameData->p2->getName(playerName);
 	_window->addText(_posX + 2, _posY + 4, playerName, textColor);
 }

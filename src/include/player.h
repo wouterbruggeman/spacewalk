@@ -4,15 +4,16 @@
 #include <string.h>
 #include "window.h"
 #include "spaceship.h"
+#include "selectableobject.h"
 
 #define MAX_SPACESHIP_AMOUNT 9
 #define PLAYERNAME_SIZE 25
 
 class SpaceShip;
 
-class Player{
+class Player : public SelectableObject{
 	public:
-		Player(Window *window);
+		Player(int color, int colorSelected, Window *window);
 		~Player();
 
 		void setName(const char *name);

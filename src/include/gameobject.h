@@ -10,7 +10,7 @@
 class GameObject{
 	public:
 		GameObject(Window *window);
-		virtual ~GameObject();
+		virtual ~GameObject() = 0;
 
 		void setLocation(int x, int y);
 		void setSize(int x, int y);

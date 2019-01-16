@@ -4,13 +4,21 @@
 #include <ncurses.h>
 #include <cstring>
 
+//White
 #define COLOR_WHITE_BLACK 1
 #define COLOR_BLACK_WHITE 2
+
+//Red
 #define COLOR_RED_BLACK 3
-#define COLOR_GREEN_BLACK 4
-#define COLOR_BLUE_BLACK 5
-#define COLOR_YELLOW_BLACK 6
-#define COLOR_BLACK_GREEN 7
+#define COLOR_BLACK_RED 4
+
+//Green
+#define COLOR_GREEN_BLACK 5
+#define COLOR_BLACK_GREEN 6
+
+//Blue
+#define COLOR_BLUE_BLACK 7
+#define COLOR_BLACK_BLUE 8
 
 class Window{
 	public:

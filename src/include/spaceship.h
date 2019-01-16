@@ -2,30 +2,38 @@
 #define SPACESHIP_H
 
 #include "gameobject.h"
+#include "selectableobject.h"
+
 #include "player.h"
 
 #define MAX_SPACESHIP_SIZE 4
 
 class Player;
 
-class SpaceShip : public GameObject{
+class SpaceShip : public GameObject, public SelectableObject{
 	public:
-		SpaceShip(unsigned char size, Player *owner, Window *window);
+		SpaceShip(unsigned char size, int color, int colorSelected,
+			Player *owner, Window *window);
 		void draw(bool selected = false);
 		void draw(int x, int y, bool selected = false);
-		void destroy();
-		bool isDestroyed();
+		void setState(unsigned char state);
+		unsigned char getState();
 
 		enum Size{
-			SIZE_UNSET = 0,
 			SMALL = 1,
 			MEDIUM = 3,
 			LARGE = 4
 		};
 
+		enum State{
+			UNPLACED = 0,
+			PLACED = 1,
+			DESTROYED = 2
+		};
+
 	private:
 		unsigned char _size;
-		bool _destroyed;
+		unsigned char _state;
 		Player *_owner;
 
 };

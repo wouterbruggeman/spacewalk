@@ -6,8 +6,8 @@ Game::Game(){
 
 	//Initialze the gamedata struct
 	_gameData = new GameData();
-	_gameData->p1 = new Player(_window);
-	_gameData->p2 = new Player(_window);
+	_gameData->p1 = new Player(COLOR_BLUE_BLACK, COLOR_BLACK_BLUE, _window);
+	_gameData->p2 = new Player(COLOR_GREEN_BLACK, COLOR_BLACK_GREEN, _window);
 	_gameData->activePlayer = _gameData->p1;
 	_gameData->board = new Board(_window);
 	_gameData->currentScreen = new WelcomeScreen(_gameData, _window);

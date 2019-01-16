@@ -1,12 +1,23 @@
 #include "player.h"
 
-Player::Player(Window *window){
+Player::Player(int color, int colorSelected, Window *window)
+	: SelectableObject(color, colorSelected){
+
 	//Store the pointer
 	_window = window;
 
 	//Initialize spaceships
-	for(int i = 0; i < MAX_SPACESHIP_AMOUNT; i++){
-		_spaceShips[i] = new SpaceShip(SpaceShip::LARGE, this, _window);
+	for(int i = 0; i < 3; i++){
+		_spaceShips[i] = new SpaceShip(SpaceShip::LARGE,
+			color, colorSelected, this, _window);
+	}
+	for(int i = 3; i < 6; i++){
+		_spaceShips[i] = new SpaceShip(SpaceShip::MEDIUM,
+			color, colorSelected, this, _window);
+	}
+	for(int i = 6; i < 9; i++){
+		_spaceShips[i] = new SpaceShip(SpaceShip::SMALL,
+			color, colorSelected, this, _window);
 	}
 }
 

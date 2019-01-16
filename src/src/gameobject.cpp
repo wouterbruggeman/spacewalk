@@ -5,9 +5,7 @@ GameObject::GameObject(Window *window){
 	this->setLocation(0,0);
 }
 
-GameObject::~GameObject(){
-
-}
+GameObject::~GameObject(){}
 
 void GameObject::setLocation(int x, int y){
 	_posX = x;

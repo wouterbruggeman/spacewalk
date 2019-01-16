@@ -11,6 +11,7 @@
 class ShipView : public GameObject{
 	public:
 		ShipView(GameData *gameData, Window *window);
+		~ShipView();
 		void draw();
 
 	private:
