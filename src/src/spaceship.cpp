@@ -17,7 +17,7 @@ void SpaceShip::draw(){
 void SpaceShip::draw(int x, int y){
 	//size determines the amount of '='
 
-	int color = _owner->getColor();
+	int color = getColor();
 
 	int i = 0;
 	for(; i < _size; i++){
