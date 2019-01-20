@@ -11,11 +11,11 @@
 class PlayerView : public GameObject{
 	public:
 		PlayerView(GameData *gameData, Window *window);
-		void draw();
-		void drawMinimal();
+		using GameObject::draw;
+		void draw(int x, int y, bool selected = false);
+		void drawMinimal(int x, int y, bool selected = false);
 	private:
 		GameData *_gameData;
-
 
 };
 #endif

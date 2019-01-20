@@ -12,10 +12,12 @@ class ShipView : public GameObject{
 	public:
 		ShipView(GameData *gameData, Window *window);
 		~ShipView();
-		void draw();
+		using GameObject::draw;
+		void draw(int x, int y, bool selected = false);
 
 	private:
 		GameData *_gameData;
+		int selectedSpaceShipIndex;
 
 };
 #endif

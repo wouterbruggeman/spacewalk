@@ -5,8 +5,7 @@ WelcomeScreen::WelcomeScreen(GameData *gameData, Window *window)
 }
 
 WelcomeScreen::~WelcomeScreen(){
-	delete _inputPopup;
-	//InputPopup is already deleted at this point
+	delete _popup;
 }
 
 void WelcomeScreen::draw(){
@@ -32,19 +31,19 @@ void WelcomeScreen::draw(){
 			);
 
 	//If the nameinput object exists, ask for input
-	if(_inputPopup != nullptr){
+	if(_popup != nullptr){
 		//Ask the name for player 1
-		_inputPopup->setMessage(WELCOME_ENTER_NAME_1);
-		_inputPopup->draw();
-		_gameData->p1->setName(_inputPopup->getString());
+		_popup->setMessage(WELCOME_ENTER_NAME_1);
+		_popup->draw();
+		//_gameData->p1->setName(_window->getString(0,0));
 
 		//Ask the name for player 2
-		_inputPopup->setMessage(WELCOME_ENTER_NAME_2);
-		_inputPopup->draw();
-		_gameData->p2->setName(_inputPopup->getString());
+		_popup->setMessage(WELCOME_ENTER_NAME_2);
+		_popup->draw();
+		//_gameData->p2->setName(_window->getString(0,0));
 
-		delete _inputPopup;
-		this->nextScreen();
+		//this->nextScreen();
+
 	}
 }
 
@@ -53,7 +52,7 @@ void WelcomeScreen::handleInput(){
 
 	if(c == ' '){
 		//Ask for the usernames
-		_inputPopup = new InputPopup(_window);
+		_popup = new Popup(_window);
 		this->draw();
 	}
 }

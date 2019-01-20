@@ -33,13 +33,18 @@ void PlaceScreen::draw(){
 	_window->addText(MARGIN_X, MARGIN_Y, PLACE_INFO_1, false);
 	_window->addText(MARGIN_X, MARGIN_Y+1, PLACE_INFO_2, false);
 	_window->addText(MARGIN_X, MARGIN_Y+2, PLACE_INFO_3, false);
-	_window->addText(MARGIN_X, _window->getSizeY() / 2 -1, PLACE_NUMBER_ASK, false);
+	_window->addText(MARGIN_X, MARGIN_Y+3, PLACE_INFO_4, false);
+	_window->addText(MARGIN_X, MARGIN_Y+4, PLACE_INFO_5, false);
 
 	_gameData->board->draw();
 	_shipView->draw();
-	_playerView->drawMinimal();
+	_playerView->drawMinimal(_playerView->getPosX(), _playerView->getPosY());
 }
 
 void PlaceScreen::handleInput(){
 	char c = getch();
+
+	if(c == KEY_RIGHT){
+		_gameData->board->moveSelection(true);
+	}
 }

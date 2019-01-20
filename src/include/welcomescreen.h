@@ -2,7 +2,7 @@
 #define WELCOMESCREEN_H
 
 #include "screen.h"
-#include "inputpopup.h"
+#include "popup.h"
 #include "placescreen.h"
 
 class WelcomeScreen : public Screen{
@@ -13,6 +13,6 @@ class WelcomeScreen : public Screen{
 		void handleInput();
 		void nextScreen();
 	private:
-		InputPopup *_inputPopup;
+		Popup *_popup;
 };
 #endif

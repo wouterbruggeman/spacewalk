@@ -2,13 +2,12 @@
 #define PLANET_H
 
 #include "gameobject.h"
-#include "selectableobject.h"
-#include "astronomicalbody.h"
 
-class Planet : public AstronomicalBody, public SelectableObject{
+class Planet : public GameObject{
 	public:
 		Planet(int color, int colorSelected, Window *window);
-		void draw();
+		using GameObject::draw;
+		void draw(int x, int y, bool selected = false);
 	private:
 
 };

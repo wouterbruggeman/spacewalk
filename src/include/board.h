@@ -11,11 +11,18 @@ class Board : public GameObject{
 	public:
 		Board(Window *window);
 		~Board();
-		void draw();
 		void initBodies();
+		using GameObject::draw;
+		void draw(int x, int y, bool selected = false);
+		void moveSelection(bool right);
+		void resetSelection();
 
 	private:
-		AstronomicalBody *_bodies[AMOUNT_OF_BODIES];
+		//Functions
+		int getSelectedPlanetIndex();
+
+		//Variables
+		GameObject *_bodies[AMOUNT_OF_BODIES];
 
 };
 #endif

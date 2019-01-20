@@ -2,13 +2,11 @@
 #define BLACKHOLE_H
 
 #include "gameobject.h"
-#include "selectableobject.h"
-#include "astronomicalbody.h"
 
-class BlackHole : public AstronomicalBody{
+class BlackHole : public GameObject{
 	public:
 		BlackHole(Window *window);
-		void draw();
+		void draw(int x, int y, bool selected = false);
 	private:
 
 };

@@ -1,23 +1,18 @@
 #include "spaceship.h"
 
-SpaceShip::SpaceShip(unsigned char size, int color, int colorSelected,
-	Player *owner, Window *window)
-	: GameObject(window),
-	SelectableObject(color, colorSelected)
+SpaceShip::SpaceShip(unsigned char size, Player *owner,
+	Window *window, int color, int colorSelected)
+	: GameObject(window, color, colorSelected)
 {
 	_size = size;
 	_owner = owner;
 	_state = SpaceShip::UNPLACED;
 }
 
-void SpaceShip::draw(){
-	this->draw(_posX, _posY);
-}
-
-void SpaceShip::draw(int x, int y){
+void SpaceShip::draw(int x, int y, bool selected){
 	//size determines the amount of '='
 
-	int color = getColor();
+	int color = getColor(selected);
 
 	int i = 0;
 	for(; i < _size; i++){

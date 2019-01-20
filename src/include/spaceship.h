@@ -2,7 +2,6 @@
 #define SPACESHIP_H
 
 #include "gameobject.h"
-#include "selectableobject.h"
 
 #include "player.h"
 
@@ -10,12 +9,11 @@
 
 class Player;
 
-class SpaceShip : public GameObject, public SelectableObject{
+class SpaceShip : public GameObject{
 	public:
-		SpaceShip(unsigned char size, int color, int colorSelected,
-			Player *owner, Window *window);
-		void draw();
-		void draw(int x, int y);
+		SpaceShip(unsigned char size, Player *owner,
+			Window *window, int color, int colorSelected);
+		void draw(int x, int y, bool selected = false);
 		void setState(unsigned char state);
 		unsigned char getState();
 
