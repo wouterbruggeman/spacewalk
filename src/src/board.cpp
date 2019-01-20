@@ -30,7 +30,7 @@ void Board::initBodies(){
 
 }
 
-void Board::draw(int x, int y, bool selected){
+void Board::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x, y);
 
 	for(int i = 0; i < AMOUNT_OF_BODIES; i++){

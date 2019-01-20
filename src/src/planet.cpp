@@ -6,7 +6,7 @@ Planet::Planet(int color, int colorSelected, Window *window) :
 	this->setSize(4,3);
 }
 
-void Planet::draw(int x, int y, bool selected){
+void Planet::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x,y);
 	_window->addText(x+1, y+1, "@@", getColor(selected));
 }

@@ -8,16 +8,16 @@ Popup::Popup(Window *window) : GameObject(window){
 	);
 }
 
-void Popup::draw(int x, int y, bool selected){
+void Popup::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x,y);
 	_window->addText(x + 1, y + 1,_message);
 }
 
-void Popup::setMessage(const char *str){
-	strcpy(_message, str);
+void Popup::setMessage(string str){
+	_message = str;
 }
 
-char* Popup::getString(){
+string Popup::getString(){
 	return _window->getString(
 		_posX + 1,
 		_posY + 2

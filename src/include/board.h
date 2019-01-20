@@ -12,8 +12,10 @@ class Board : public GameObject{
 		Board(Window *window);
 		~Board();
 		void initBodies();
+
 		using GameObject::draw;
-		void draw(int x, int y, bool selected = false);
+		void drawAtPos(int x, int y, bool selected = false);
+
 		void moveSelection(bool right);
 		void resetSelection();
 

@@ -12,8 +12,9 @@ class ShipView : public GameObject{
 	public:
 		ShipView(GameData *gameData, Window *window);
 		~ShipView();
+
 		using GameObject::draw;
-		void draw(int x, int y, bool selected = false);
+		void drawAtPos(int x, int y, bool selected = false);
 
 	private:
 		GameData *_gameData;

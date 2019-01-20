@@ -13,7 +13,10 @@ class SpaceShip : public GameObject{
 	public:
 		SpaceShip(unsigned char size, Player *owner,
 			Window *window, int color, int colorSelected);
-		void draw(int x, int y, bool selected = false);
+
+		using GameObject::draw;
+		void drawAtPos(int x, int y, bool selected = false);
+
 		void setState(unsigned char state);
 		unsigned char getState();
 

@@ -2,7 +2,8 @@
 #define WINDOW_H
 
 #include <ncurses.h>
-#include <cstring>
+#include <string>
+using namespace std;
 
 //White
 #define COLOR_WHITE_BLACK 1
@@ -31,16 +32,18 @@ class Window{
 		void clear();
 
 		//Text functions
-		void addText(int x, int y, const char *str,
-				char color = COLOR_WHITE_BLACK, bool centerHorizontal = false);
-		char* getString(int x, int y);
+		void addText(int x, int y, string str,
+			char color = COLOR_WHITE_BLACK, bool centerHorizontal = false);
+		string getString(int x, int y);
 
-		void moveCursor(int x, int y);
+
 		bool isRunning();
 
 		int getSizeX();
 		int getSizeY();
 	private:
+		void moveCursor(int x, int y);
+		void disableCursor();
 		void pairColors();
 
 		bool _isRunning = false;

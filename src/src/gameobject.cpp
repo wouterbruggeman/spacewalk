@@ -10,7 +10,7 @@ GameObject::GameObject(Window *window, int color, int colorSelected){
 GameObject::~GameObject(){}
 
 void GameObject::draw(bool selected){
-	this->draw(_posX, _posY, selected);
+	this->drawAtPos(_posX, _posY, selected);
 }
 
 void GameObject::setLocation(int x, int y){

@@ -45,11 +45,7 @@ void Window::clear(){
 	erase();
 }
 
-void Window::moveCursor(int x, int y){
-	curs_set(1);
-}
-
-void Window::addText(int x, int y, const char *str,
+void Window::addText(int x, int y, string str,
 		char color, bool centerHorizontal){
 
 	attron(COLOR_PAIR(color));
@@ -57,19 +53,27 @@ void Window::addText(int x, int y, const char *str,
 	//Add the text
 	int posX = x;
 	if(centerHorizontal){
-		posX = x - (strlen(str) / 2);
+		posX = x - (str.size() / 2);
 	}
-	mvaddstr(y, posX, str);
+	mvaddstr(y, posX, str.c_str());
 
 	attroff(COLOR_PAIR(color));
 }
 
-char* Window::getString(int x, int y){
+string Window::getString(int x, int y){
 	echo();
-	char *str;
-	mvgetstr(y,x,str);
+	moveCursor(x,y);
+
+	string input;
+	int ch = getch();
+	while(ch != '\n'){
+		input.push_back(ch);
+		ch = getch();
+	}
+
+	disableCursor();
 	noecho();
-	return str;
+	return input;
 }
 
 bool Window::isRunning(){
@@ -82,6 +86,16 @@ int Window::getSizeX(){
 
 int Window::getSizeY(){
 	return _sizeY;
+}
+
+void Window::moveCursor(int x, int y){
+	curs_set(1);
+	move(y,x);
+	refresh();
+}
+
+void Window::disableCursor(){
+	curs_set(0);
 }
 
 void Window::pairColors(){

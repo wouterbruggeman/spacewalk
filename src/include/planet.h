@@ -7,7 +7,7 @@ class Planet : public GameObject{
 	public:
 		Planet(int color, int colorSelected, Window *window);
 		using GameObject::draw;
-		void draw(int x, int y, bool selected = false);
+		void drawAtPos(int x, int y, bool selected = false);
 	private:
 
 };

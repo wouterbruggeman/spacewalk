@@ -9,7 +9,7 @@ SpaceShip::SpaceShip(unsigned char size, Player *owner,
 	_state = SpaceShip::UNPLACED;
 }
 
-void SpaceShip::draw(int x, int y, bool selected){
+void SpaceShip::drawAtPos(int x, int y, bool selected){
 	//size determines the amount of '='
 
 	int color = getColor(selected);

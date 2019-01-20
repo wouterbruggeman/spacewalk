@@ -8,7 +8,7 @@ ShipView::~ShipView(){
 
 }
 
-void ShipView::draw(int x, int y, bool selected){
+void ShipView::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x,y);
 	_window->addText(x + 2, y + 1, SHIPVIEW_TITLE, COLOR_BLUE_BLACK);
 
@@ -19,9 +19,9 @@ void ShipView::draw(int x, int y, bool selected){
 		//If ship is not placed yet.
 		if(s->getState() == SpaceShip::UNPLACED){
 			if(i==0){
-				s->draw(x + 2, y + 3 + i);
+				s->drawAtPos(x + 2, y + 3 + i, true);
 			}
-			s->draw(x + 2, y + 3 + i);
+			s->drawAtPos(x + 2, y + 3 + i, false);
 		}
 	}
 }

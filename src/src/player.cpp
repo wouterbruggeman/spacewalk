@@ -25,16 +25,16 @@ Player::~Player(){
 	}
 }
 
-void Player::draw(int x, int y, bool selected){
+void Player::drawAtPos(int x, int y, bool selected){
 
 }
 
-void Player::setName(const char *name){
-	strcpy(_name, name);
+void Player::setName(string name){
+	_name = name;
 }
 
-void Player::getName(char *str){
-	strcpy(str, _name);
+string Player::getName(){
+	return _name;
 }
 
 SpaceShip* Player::getSpaceShip(int index){

@@ -38,7 +38,7 @@ void PlaceScreen::draw(){
 
 	_gameData->board->draw();
 	_shipView->draw();
-	_playerView->drawMinimal(_playerView->getPosX(), _playerView->getPosY());
+	_playerView->drawMinimal();
 }
 
 void PlaceScreen::handleInput(){

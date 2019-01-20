@@ -4,11 +4,10 @@ PlayerView::PlayerView(GameData *gameData, Window *window) : GameObject(window){
 	_gameData = gameData;
 }
 
-void PlayerView::drawMinimal(int x, int y, bool selected){
-	this->draw();
-
+void PlayerView::drawMinimal(){
+	this->drawBorder(_posX, _posY);
 	//Draw player names
-	char *playerName;
+	/*char *playerName;
 	int textColor;
 
 	//Draw player 1
@@ -19,10 +18,10 @@ void PlayerView::drawMinimal(int x, int y, bool selected){
 	//Draw player2
 	textColor = _gameData->p2->getColor(_gameData->p2 == _gameData->activePlayer);
 	_gameData->p2->getName(playerName);
-	_window->addText(_posX + 2, _posY + 4, playerName, textColor);
+	_window->addText(_posX + 2, _posY + 4, playerName, textColor);*/
 }
 
-void PlayerView::draw(int x, int y, bool selected){
+void PlayerView::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x,y);
 
 	//Draw title

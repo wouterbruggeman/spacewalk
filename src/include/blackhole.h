@@ -6,7 +6,7 @@
 class BlackHole : public GameObject{
 	public:
 		BlackHole(Window *window);
-		void draw(int x, int y, bool selected = false);
+		void drawAtPos(int x, int y, bool selected = false);
 	private:
 
 };
