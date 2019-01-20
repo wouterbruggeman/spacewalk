@@ -61,20 +61,62 @@ void Window::addText(int x, int y, string str,
 }
 
 string Window::getString(int x, int y){
-	echo();
+	//Show characters
 	moveCursor(x,y);
 
+	//Get the string
 	string input;
-	int ch = getch();
+	int movedX = x;
+
+	char ch = getch();
 	while(ch != '\n'){
-		input.push_back(ch);
+		//Input is between a-Z or 0-9
+		if(((ch >= 65) && (ch <= 122)) || ((ch >= 48) && (ch <= 57))){
+			//Add new character
+			input.push_back(ch);
+			movedX += 1;
+
+		//Input is backspace character
+		}
+
+
+		//TODO: Add working backspace
+		/*else if(ch == 8){
+			//Remove last character
+			input.pop_back();
+
+			//Update screen
+			string character;
+			character.push_back('1');
+
+			movedX -= 1;
+			addText(movedX, y, character);
+
+		}*/
+		addText(x,y, input);
+		moveCursor(movedX, y);
+
 		ch = getch();
 	}
 
+	//Disable the cursor and don't show input anymore
 	disableCursor();
-	noecho();
+
+	//Return the string
 	return input;
 }
+
+//For some reason this always leads to a segmentation fault..
+/*string Window::getString(int x, int y){
+	echo();
+
+	char *str;
+	mvgetstr(y,x,str);
+	string input = str;
+
+	noecho();
+	return input;
+}*/
 
 bool Window::isRunning(){
 	return _isRunning;

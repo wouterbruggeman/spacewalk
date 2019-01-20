@@ -6,6 +6,7 @@ PlaceScreen::PlaceScreen(GameData *gameData, Window *window)
 	//Create views
 	_shipView = new ShipView(_gameData, window);
 	_playerView = new PlayerView(_gameData, window);
+	//TODO: Move playerview to gamedata object
 
 	//Set view size and location
 	_shipView->setSize(SHIPVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
@@ -38,7 +39,7 @@ void PlaceScreen::draw(){
 
 	_gameData->board->draw();
 	_shipView->draw();
-	_playerView->drawMinimal();
+	_playerView->draw();
 }
 
 void PlaceScreen::handleInput(){

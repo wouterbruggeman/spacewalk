@@ -45,7 +45,7 @@ void WelcomeScreen::handleInput(){
 		//Ask the name for player 2
 		_popup->setMessage(WELCOME_ENTER_NAME_2);
 		_popup->draw();
-		//_gameData->p2->setName(_popup->getString());
+		_gameData->p2->setName(_popup->getString());
 
 		this->nextScreen();
 
