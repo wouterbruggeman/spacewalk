@@ -20,8 +20,9 @@ void ShipView::drawAtPos(int x, int y, bool selected){
 		if(s->getState() == SpaceShip::UNPLACED){
 			if(i==0){
 				s->drawAtPos(x + 2, y + 3 + i, true);
+			}else{
+				s->drawAtPos(x + 2, y + 3 + i, false);
 			}
-			s->drawAtPos(x + 2, y + 3 + i, false);
 		}
 	}
 }
