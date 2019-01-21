@@ -34,7 +34,7 @@ class Window{
 		//Text functions
 		void addText(int x, int y, string str,
 			char color = COLOR_WHITE_BLACK, bool centerHorizontal = false);
-		string getString(int x, int y);
+		string getString(int x, int y, int n = 50);
 
 
 		bool isRunning();

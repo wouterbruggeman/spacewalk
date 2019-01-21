@@ -60,7 +60,10 @@ void Window::addText(int x, int y, string str,
 	attroff(COLOR_PAIR(color));
 }
 
-string Window::getString(int x, int y){
+string Window::getString(int x, int y, int n){
+
+	int maxChars = n;
+
 	//Show characters
 	moveCursor(x,y);
 
@@ -68,31 +71,32 @@ string Window::getString(int x, int y){
 	string input;
 	int movedX = x;
 
-	char ch = getch();
+	int ch = getch();
 	while(ch != '\n'){
 		//Input is between a-Z or 0-9
 		if(((ch >= 65) && (ch <= 122)) || ((ch >= 48) && (ch <= 57))){
-			//Add new character
-			input.push_back(ch);
-			movedX += 1;
+			//Add new character if allowed by maxChars
+			if(input.size() < maxChars){
+				input.push_back(ch);
+				movedX += 1;
+			}
 
 		//Input is backspace character
+		}else if(ch == KEY_BACKSPACE){
+			//If string has characters to remove
+			if(input.size() > 0){
+				//Remove last character
+				input.pop_back();
+
+				//Update screen
+				string character;
+				character.push_back(' ');
+
+				movedX -= 1;
+				addText(movedX, y, character);
+			}
+
 		}
-
-
-		//TODO: Add working backspace
-		/*else if(ch == 8){
-			//Remove last character
-			input.pop_back();
-
-			//Update screen
-			string character;
-			character.push_back('1');
-
-			movedX -= 1;
-			addText(movedX, y, character);
-
-		}*/
 		addText(x,y, input);
 		moveCursor(movedX, y);
 
