@@ -4,6 +4,9 @@
 #include "window.h"
 #include "gamedata.h"
 
+#include <time.h>
+#include <stdlib.h>
+
 #define MARGIN_X 2
 #define MARGIN_Y 1
 
@@ -12,12 +15,16 @@ struct GameData;
 class Screen{
 	public:
 		Screen(GameData *gameData, Window *window);
-		virtual ~Screen();
+		virtual ~Screen() = 0;
 
-		virtual void draw();
+		virtual void draw() = 0;
 		virtual void nextScreen();
-		virtual void handleInput();
+		virtual void handleInput() = 0;
 	protected:
+		//Functions
+		void drawStars(int probability);
+
+		//Variables
 		Window *_window;
 		GameData *_gameData;
 };

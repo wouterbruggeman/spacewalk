@@ -13,6 +13,7 @@ class WelcomeScreen : public Screen{
 		void handleInput();
 		void nextScreen();
 	private:
+		//Variables
 		Popup *_popup;
 };
 #endif

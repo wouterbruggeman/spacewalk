@@ -4,6 +4,10 @@ MainScreen::MainScreen(GameData *gameData, Window *window) : Screen(gameData, wi
 
 }
 
+MainScreen::~MainScreen(){
+
+}
+
 void MainScreen::draw(){
 	_window->clear();
 }

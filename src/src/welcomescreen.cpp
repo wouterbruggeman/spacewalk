@@ -8,10 +8,13 @@ WelcomeScreen::WelcomeScreen(GameData *gameData, Window *window)
 
 WelcomeScreen::~WelcomeScreen(){
 	delete _popup;
-	//InputPopup is already deleted at this point
 }
 
 void WelcomeScreen::draw(){
+	//Draw stars
+	drawStars(100);
+
+	//Draw main text
 	_window->addText(
 			_window->getSizeX() / 2,
 			_window->getSizeY() / 2,
@@ -22,6 +25,8 @@ void WelcomeScreen::draw(){
 			(_window->getSizeY() / 2) + 1,
 			WELCOME_SUB_STR, COLOR_WHITE_BLACK, true
 			);
+
+	//Draw author name and version
 	_window->addText(
 			_window->getSizeX() - 20,
 			_window->getSizeY() - 2,

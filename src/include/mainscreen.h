@@ -7,6 +7,7 @@
 class MainScreen : public Screen{
 	public:
 		MainScreen(GameData *gameData, Window *window);
+		~MainScreen();
 		void draw();
 		void handleInput();
 	private:

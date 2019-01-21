@@ -31,6 +31,9 @@ PlaceScreen::~PlaceScreen(){
 }
 
 void PlaceScreen::draw(){
+	//Draw stars
+	drawStars(100);
+
 	//Draw some info
 	_window->addText(MARGIN_X, MARGIN_Y, PLACE_INFO_1);
 	_window->addText(MARGIN_X, MARGIN_Y+1, PLACE_INFO_2);
