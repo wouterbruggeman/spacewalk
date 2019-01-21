@@ -76,6 +76,7 @@ void PlaceScreen::placeSpaceShipOnBoard(){
 		_gameData->activePlayer = _gameData->p2;
 		return;
 	}
+
 	//Place the ship
 	_gameData->board->placeSpaceShip(shipIndex);
 }

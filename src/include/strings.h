@@ -21,7 +21,9 @@
 #define SPACESHIP_TOP_CHAR ">"
 #define SPACESHIP_OTHER_CHAR "="
 #define PLANET_CONTENT "@@"
-#define STAR "*"
+
+#define STAR_1 "*"
+#define STAR_2 "."
 
 #define INFO_AUTHOR "Wouter Bruggeman"
 #define INFO_VERSION "spacewalk v0.1.1"
