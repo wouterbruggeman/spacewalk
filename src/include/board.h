@@ -11,19 +11,17 @@ class Board : public GameObject{
 	public:
 		Board(Window *window);
 		~Board();
-		void initBodies();
 
 		using GameObject::draw;
 		void drawAtPos(int x, int y, bool selected = false);
 
+		void initBodies();
 		void moveSelection(bool right);
-		void resetSelection();
 
 	private:
-		//Functions
-		int getSelectedPlanetIndex();
 
 		//Variables
+		int _selectedBody;
 		GameObject *_bodies[AMOUNT_OF_BODIES];
 
 };
