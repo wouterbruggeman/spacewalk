@@ -4,7 +4,6 @@
 #include "welcomescreen.h"
 #include "gamedata.h"
 
-
 class Game{
 	public:
 		Game();

@@ -4,6 +4,7 @@
 #include "screen.h"
 #include "popup.h"
 #include "placescreen.h"
+#include "movescreen.h"
 
 class WelcomeScreen : public Screen{
 	public:

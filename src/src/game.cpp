@@ -12,11 +12,20 @@ Game::Game(){
 	_gameData->p2 = new Player(COLOR_GREEN_BLACK, COLOR_BLACK_GREEN, _window);
 	_gameData->activePlayer = _gameData->p1;
 
-	//Create playerview
+	//Create playerview, location is dependent on the shipview in the placescreen, this will
+	//be set later
 	_gameData->playerView = new PlayerView(_gameData, _window);
+	_gameData->playerView->setSize(PLAYERVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
 
-	//Create board and screen
+	//Create board
 	_gameData->board = new Board(_gameData, _window);
+	_gameData->board->setLocation(MARGIN_X, _window->getSizeY() / 2);
+	_gameData->board->setSize(_window->getSizeX() - (2 * MARGIN_X), (_window->getSizeY() / 2));
+
+	//Initialize the bodies after setting the size and location
+	_gameData->board->initBodies();
+
+	//Create screen
 	_gameData->currentScreen = new WelcomeScreen(_gameData, _window);
 }
 

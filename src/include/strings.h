@@ -12,8 +12,10 @@
 #define PLACE_INFO_4 "Please select a planet with your arrow keys. Press the spacebar to"
 #define PLACE_INFO_5 "place the selected spaceship on the selected planet."
 
+#define MOVE_INFO_1 "In this phrase you'll have to move your spaceships."
+
 #define PLACE_SUCCESS "Ship placed."
-#define PLACE_FAIL "Ship could not be placed on this planet. Please select another planet."
+#define PLACE_FAIL "This ship could not be placed on this planet. Please select another planet."
 
 #define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"

@@ -5,7 +5,7 @@
 #include "shipview.h"
 #include "playerview.h"
 
-#include "mainscreen.h"
+#include "movescreen.h"
 #include "strings.h"
 
 class PlaceScreen : public Screen{

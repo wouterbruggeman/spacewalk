@@ -58,5 +58,6 @@ void WelcomeScreen::handleInput(){
 }
 
 void WelcomeScreen::nextScreen(){
-	_gameData->currentScreen = new PlaceScreen(_gameData, _window);
+	//_gameData->currentScreen = new PlaceScreen(_gameData, _window);
+	_gameData->currentScreen = new MoveScreen(_gameData, _window);
 }

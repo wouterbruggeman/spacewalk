@@ -10,20 +10,12 @@ PlaceScreen::PlaceScreen(GameData *gameData, Window *window)
 	_shipView->setSize(SHIPVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
 	_shipView->setLocation(_window->getSizeX() - _shipView->getSizeX() - MARGIN_X, MARGIN_Y);
 
-	//Set playerview size and location
-	_gameData->playerView->setSize(PLAYERVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
+	//Set playerview location
 	_gameData->playerView->setLocation(
 		_window->getSizeX() -
 		(_shipView->getSizeX() + _gameData->playerView->getSizeX() +  2 * MARGIN_X),
 		MARGIN_Y
 	);
-
-	//Create board.
-	_gameData->board->setLocation(MARGIN_X, _window->getSizeY() / 2);
-	_gameData->board->setSize(_window->getSizeX() - (2 * MARGIN_X), (_window->getSizeY() / 2));
-
-	//Initialize the bodies after setting the size and location
-	_gameData->board->initBodies();
 }
 
 PlaceScreen::~PlaceScreen(){
@@ -82,5 +74,5 @@ void PlaceScreen::placeSpaceShipOnBoard(){
 }
 
 void PlaceScreen::nextScreen(){
-	_gameData->currentScreen = new MainScreen(_gameData, _window);
+	_gameData->currentScreen = new MoveScreen(_gameData, _window);
 }
