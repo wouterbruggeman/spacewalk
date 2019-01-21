@@ -53,24 +53,28 @@ void PlaceScreen::handleInput(){
 	}else if(c == KEY_LEFT){
 		_gameData->board->moveSelection(false);
 	}else if(c == ' '){
-		//Get the index of the top unplaced spaceship
-		int shipIndex = _gameData->activePlayer->getTopUnplacedSpaceShipIndex();
+		placeSpaceShipOnBoard();
+	}
+}
 
-		//If there is no unplaced ship left
-		if(shipIndex == -1){
-			//Check if we need to switch to the next screen.
-			if(_gameData->activePlayer == _gameData->p2){
-				nextScreen();
-				return;
-			}
+void PlaceScreen::placeSpaceShipOnBoard(){
+	//Get the index of the top unplaced spaceship
+	int shipIndex = _gameData->activePlayer->getTopUnplacedSpaceShipIndex();
 
-			//Switch to the next player
-			_gameData->activePlayer = _gameData->p2;
+	//If there is no unplaced ship left
+	if(shipIndex == -1){
+		//Check if we need to switch to the next screen.
+		if(_gameData->activePlayer == _gameData->p2){
+			nextScreen();
 			return;
 		}
-		//Place the ship
-		_gameData->board->placeSpaceShip(shipIndex);
+
+		//Switch to the next player
+		_gameData->activePlayer = _gameData->p2;
+		return;
 	}
+	//Place the ship
+	_gameData->board->placeSpaceShip(shipIndex);
 }
 
 void PlaceScreen::nextScreen(){

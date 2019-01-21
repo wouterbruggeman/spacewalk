@@ -17,6 +17,7 @@ class PlaceScreen : public Screen{
 
 	private:
 		//Functions
+		void placeSpaceShipOnBoard();
 		void nextScreen();
 
 		//Variables
