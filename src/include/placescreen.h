@@ -5,7 +5,7 @@
 #include "shipview.h"
 #include "playerview.h"
 
-//#include "mainscreen.h"
+#include "mainscreen.h"
 #include "strings.h"
 
 class PlaceScreen : public Screen{
@@ -16,6 +16,10 @@ class PlaceScreen : public Screen{
 		void handleInput();
 
 	private:
+		//Functions
+		void nextScreen();
+
+		//Variables
 		ShipView *_shipView;
 };
 #endif

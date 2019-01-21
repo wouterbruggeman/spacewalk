@@ -14,7 +14,7 @@ class Planet : public GameObject{
 		bool addSpaceShip(SpaceShip *s);
 
 	private:
-		bool vectorContainsSize(unsigned char size);
+		bool vectorContainsShipType(SpaceShip *s);
 		vector<SpaceShip *> _spaceShips;
 };
 #endif

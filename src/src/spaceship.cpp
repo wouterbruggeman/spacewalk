@@ -32,3 +32,7 @@ unsigned char SpaceShip::getState(){
 unsigned char SpaceShip::getSize(){
 	return _size;
 }
+
+Player* SpaceShip::getOwner(){
+	return _owner;
+}

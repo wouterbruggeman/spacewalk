@@ -17,12 +17,18 @@ class Player : public GameObject{
 	public:
 		Player(int color, int colorSelected, Window *window);
 		~Player();
+
+		//Draw functions
 		using GameObject::draw;
 		void drawAtPos(int x, int y, bool selected = false);
 
+		//Name functions
 		void setName(string name);
 		string getName();
+
+		//Spaceship content functions
 		SpaceShip* getSpaceShip(int index);
+		int getTopUnplacedSpaceShipIndex();
 
 	private:
 		//Variables

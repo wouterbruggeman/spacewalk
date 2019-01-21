@@ -39,3 +39,14 @@ string Player::getName(){
 SpaceShip* Player::getSpaceShip(int index){
 	return _spaceShips[index];
 }
+
+int Player::getTopUnplacedSpaceShipIndex(){
+	for(int i = 0; i < SPACESHIP_AMOUNT; i++){
+		//If ship is not placed yet.
+		if(_spaceShips[i]->getState() == SpaceShip::UNPLACED){
+			//Return the first unplaced ship index
+			return i;
+		}
+	}
+	return -1;
+}

@@ -20,6 +20,7 @@ class SpaceShip : public GameObject{
 		void setState(unsigned char state);
 		unsigned char getState();
 		unsigned char getSize();
+		Player* getOwner();
 
 		enum Size{
 			SMALL = 1,

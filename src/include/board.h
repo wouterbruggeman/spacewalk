@@ -20,7 +20,7 @@ class Board : public GameObject{
 
 		void initBodies();
 		void moveSelection(bool right);
-		void placeSpaceShip();
+		void placeSpaceShip(int index);
 
 	private:
 

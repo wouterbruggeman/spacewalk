@@ -18,16 +18,20 @@ void Planet::drawAtPos(int x, int y, bool selected){
 }
 
 bool Planet::addSpaceShip(SpaceShip *s){
-	if(vectorContainsSize(s->getSize())){
+	if(vectorContainsShipType(s)){
 		return false;
 	}
 	_spaceShips.push_back(s);
 	return true;
 }
 
-bool Planet::vectorContainsSize(unsigned char size){
+
+//returns true if vector already contains ship with size and owner, otherwise false
+bool Planet::vectorContainsShipType(SpaceShip *s){
 	for(int i = 0; i < _spaceShips.size(); i++){
-		if(_spaceShips[i]->getSize() == size){
+		if(_spaceShips[i]->getSize() == s->getSize()
+			&& _spaceShips[i]->getOwner() == s->getOwner())
+		{
 			return true;
 		}
 	}

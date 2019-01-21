@@ -53,6 +53,22 @@ void PlaceScreen::handleInput(){
 	}else if(c == KEY_LEFT){
 		_gameData->board->moveSelection(false);
 	}else if(c == ' '){
-		_gameData->board->placeSpaceShip();
+		int shipIndex = _gameData->activePlayer->getTopUnplacedSpaceShipIndex();
+
+		if(shipIndex == -1){
+			if(_gameData->activePlayer == _gameData->p2){
+				nextScreen();
+			}
+
+			//Next player
+			_gameData->activePlayer = _gameData->p2;
+			return;
+		}
+		//Place the ship
+		_gameData->board->placeSpaceShip(shipIndex);
 	}
+}
+
+void PlaceScreen::nextScreen(){
+	_gameData->currentScreen = new MainScreen(_gameData, _window);
 }

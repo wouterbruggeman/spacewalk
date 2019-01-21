@@ -36,10 +36,10 @@ void Board::initBodies(){
 
 void Board::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x, y);
-	if(_placeStatus){
-	//	_window->addText(x + MARGIN_X, y + MARGIN_Y, _statusMessage);
-	}else{
-
+	if(_placeStatus == 1){
+		_window->addText(x + MARGIN_X, y + MARGIN_Y, PLACE_SUCCESS);
+	}else if(_placeStatus == 0){
+		_window->addText(x + MARGIN_X, y + MARGIN_Y, PLACE_FAIL);
 	}
 
 	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
@@ -67,21 +67,18 @@ void Board::moveSelection(bool right){
 	}
 }
 
-void Board::placeSpaceShip(){
-	//Loop through all spaceships and find the unselected ones.
-	for(int i = 0; i < SPACESHIP_AMOUNT; i++){
-		SpaceShip *s = _gameData->activePlayer->getSpaceShip(i);
-		//If ship is not placed yet.
-		if(s->getState() == SpaceShip::UNPLACED){
-			//Body is always a planet
-			Planet *p = (Planet*) _bodies[_selectedBody];
-			_placeStatus = p->addSpaceShip(s);
+void Board::placeSpaceShip(int index){
+	//Reset the status
+	_placeStatus = -1;
 
-			//If the ship was placed
-			if(_placeStatus){
-				s->setState(SpaceShip::PLACED);
-			}
-			return;
-		}
+	SpaceShip *s = _gameData->activePlayer->getSpaceShip(index);
+
+	//Body is always a planet
+	Planet *p = (Planet*) _bodies[_selectedBody];
+	_placeStatus = p->addSpaceShip(s);
+
+	//If the ship was placed
+	if(_placeStatus){
+		s->setState(SpaceShip::PLACED);
 	}
 }

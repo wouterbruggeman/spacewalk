@@ -13,7 +13,7 @@
 #define PLACE_INFO_5 "place the selected spaceship on the selected planet."
 
 #define PLACE_SUCCESS "Ship placed."
-#define PLACE_FAIL "Ship couldn't be placed on this planet."
+#define PLACE_FAIL "Ship could not be placed on this planet. Please select another planet."
 
 #define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"
