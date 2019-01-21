@@ -52,7 +52,7 @@ void PlaceScreen::handleInput(){
 		_gameData->board->moveSelection(true);
 	}else if(c == KEY_LEFT){
 		_gameData->board->moveSelection(false);
-	}else if(c == KEY_ENTER){
-
+	}else if(c == ' '){
+		_gameData->board->placeSpaceShip();
 	}
 }

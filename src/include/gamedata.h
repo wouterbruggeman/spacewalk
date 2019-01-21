@@ -8,6 +8,7 @@
 
 class Screen;
 class PlayerView;
+class Board;
 
 struct GameData{
 	Player *p1;

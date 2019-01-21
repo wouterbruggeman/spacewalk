@@ -28,8 +28,6 @@ class Player : public GameObject{
 		//Variables
 		string _name;
 		SpaceShip *_spaceShips[SPACESHIP_AMOUNT];
-		int selectedSpaceShipIndex;
-
 
 };
 #endif

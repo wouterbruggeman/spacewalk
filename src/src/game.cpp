@@ -16,7 +16,7 @@ Game::Game(){
 	_gameData->playerView = new PlayerView(_gameData, _window);
 
 	//Create board and screen
-	_gameData->board = new Board(_window);
+	_gameData->board = new Board(_gameData, _window);
 	_gameData->currentScreen = new WelcomeScreen(_gameData, _window);
 }
 

@@ -16,7 +16,6 @@ Player::Player(int color, int colorSelected, Window *window)
 		_spaceShips[i] = new SpaceShip(SpaceShip::SMALL,
 			this, _window, color, colorSelected);
 	}
-	selectedSpaceShipIndex = 0;
 }
 
 Player::~Player(){

@@ -4,12 +4,15 @@
 #include "gameobject.h"
 #include "planet.h"
 #include "blackhole.h"
+#include "gamedata.h"
 
 #define AMOUNT_OF_BODIES 14
 
+struct GameData;
+
 class Board : public GameObject{
 	public:
-		Board(Window *window);
+		Board(GameData *gameData, Window *window);
 		~Board();
 
 		using GameObject::draw;
@@ -17,12 +20,17 @@ class Board : public GameObject{
 
 		void initBodies();
 		void moveSelection(bool right);
+		void placeSpaceShip();
 
 	private:
 
 		//Variables
+		int _placeStatus;
+
 		int _selectedBody;
 		GameObject *_bodies[AMOUNT_OF_BODIES];
+
+		GameData *_gameData;
 
 };
 #endif

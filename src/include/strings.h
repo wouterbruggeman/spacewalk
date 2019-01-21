@@ -9,8 +9,11 @@
 #define PLACE_INFO_1 "In this phrase you'll have to place your spaceships on the planets."
 #define PLACE_INFO_2 "You'll start with your biggest spaceship, which can be seen in the "
 #define PLACE_INFO_3 "'SpaceShips' panel at the right side of your screen."
-#define PLACE_INFO_4 "Please select a planet with your arrow keys. Press Enter to place the"
-#define PLACE_INFO_5 "selected spaceship on the selected planet."
+#define PLACE_INFO_4 "Please select a planet with your arrow keys. Press the spacebar to"
+#define PLACE_INFO_5 "place the selected spaceship on the selected planet."
+
+#define PLACE_SUCCESS "Ship placed."
+#define PLACE_FAIL "Ship couldn't be placed on this planet."
 
 #define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"
@@ -18,8 +21,9 @@
 #define INFO_AUTHOR "Wouter Bruggeman"
 #define INFO_VERSION "spacewalk v0.1.0"
 
-
 #define SPACESHIP_TOP_CHAR ">"
 #define SPACESHIP_OTHER_CHAR "="
+
+#define PLANET_CONTENT "@@"
 
 #endif

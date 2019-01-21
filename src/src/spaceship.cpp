@@ -28,3 +28,7 @@ void SpaceShip::setState(unsigned char state){
 unsigned char SpaceShip::getState(){
 	return _state;
 }
+
+unsigned char SpaceShip::getSize(){
+	return _size;
+}

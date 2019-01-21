@@ -1,7 +1,9 @@
 #include "board.h"
 
-Board::Board(Window *window) : GameObject(window){
+Board::Board(GameData *gameData, Window *window) : GameObject(window){
+	_gameData = gameData;
 
+	_placeStatus = -1;
 }
 
 Board::~Board(){
@@ -34,6 +36,11 @@ void Board::initBodies(){
 
 void Board::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x, y);
+	if(_placeStatus){
+	//	_window->addText(x + MARGIN_X, y + MARGIN_Y, _statusMessage);
+	}else{
+
+	}
 
 	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
 		_bodies[i]->draw(_selectedBody == i);
@@ -56,6 +63,25 @@ void Board::moveSelection(bool right){
 		}
 		if(_selectedBody < 0){
 			_selectedBody = AMOUNT_OF_BODIES - 1;
+		}
+	}
+}
+
+void Board::placeSpaceShip(){
+	//Loop through all spaceships and find the unselected ones.
+	for(int i = 0; i < SPACESHIP_AMOUNT; i++){
+		SpaceShip *s = _gameData->activePlayer->getSpaceShip(i);
+		//If ship is not placed yet.
+		if(s->getState() == SpaceShip::UNPLACED){
+			//Body is always a planet
+			Planet *p = (Planet*) _bodies[_selectedBody];
+			_placeStatus = p->addSpaceShip(s);
+
+			//If the ship was placed
+			if(_placeStatus){
+				s->setState(SpaceShip::PLACED);
+			}
+			return;
 		}
 	}
 }

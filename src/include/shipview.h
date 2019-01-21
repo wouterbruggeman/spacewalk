@@ -17,8 +17,11 @@ class ShipView : public GameObject{
 		void drawAtPos(int x, int y, bool selected = false);
 
 	private:
+		//Functions
+		int getSelectedShipIndex();
+
+		//Variables
 		GameData *_gameData;
-		int selectedSpaceShipIndex;
 
 };
 #endif
