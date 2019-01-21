@@ -17,6 +17,5 @@ class PlaceScreen : public Screen{
 
 	private:
 		ShipView *_shipView;
-		PlayerView *_playerView;
 };
 #endif

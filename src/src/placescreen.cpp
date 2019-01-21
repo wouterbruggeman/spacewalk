@@ -5,17 +5,15 @@ PlaceScreen::PlaceScreen(GameData *gameData, Window *window)
 
 	//Create views
 	_shipView = new ShipView(_gameData, window);
-	_playerView = new PlayerView(_gameData, window);
-	//TODO: Move playerview to gamedata object
 
 	//Set view size and location
 	_shipView->setSize(SHIPVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
 	_shipView->setLocation(_window->getSizeX() - _shipView->getSizeX() - MARGIN_X, MARGIN_Y);
 
-	_playerView->setSize(PLAYERVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
-	_playerView->setLocation(
+	_gameData->playerView->setSize(PLAYERVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
+	_gameData->playerView->setLocation(
 		_window->getSizeX() -
-		(_shipView->getSizeX() + _playerView->getSizeX() +  2 * MARGIN_X),
+		(_shipView->getSizeX() + _gameData->playerView->getSizeX() +  2 * MARGIN_X),
 		MARGIN_Y
 	);
 
@@ -27,7 +25,6 @@ PlaceScreen::PlaceScreen(GameData *gameData, Window *window)
 
 PlaceScreen::~PlaceScreen(){
 	delete _shipView;
-	delete _playerView;
 }
 
 void PlaceScreen::draw(){
@@ -39,7 +36,7 @@ void PlaceScreen::draw(){
 
 	_gameData->board->draw();
 	_shipView->draw();
-	_playerView->draw();
+	_gameData->playerView->draw();
 }
 
 void PlaceScreen::handleInput(){

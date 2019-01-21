@@ -2,15 +2,18 @@
 #define GAMEDATA_H
 
 #include "player.h"
+#include "playerview.h"
 #include "board.h"
 #include "screen.h"
 
 class Screen;
+class PlayerView;
 
 struct GameData{
-	Player *activePlayer;
 	Player *p1;
 	Player *p2;
+	Player *activePlayer;
+	PlayerView *playerView;
 	Board *board;
 	Screen *currentScreen;
 };

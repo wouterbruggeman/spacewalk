@@ -8,6 +8,8 @@
 
 #define PLAYERVIEW_SIZE_X 20
 
+struct GameData;
+
 class PlayerView : public GameObject{
 	public:
 		PlayerView(GameData *gameData, Window *window);
