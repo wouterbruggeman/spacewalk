@@ -14,8 +14,8 @@
 
 #define MOVE_INFO_1 "In this phrase you'll have to move your spaceships."
 
-#define PLACE_SUCCESS "Ship placed."
 #define PLACE_FAIL "This ship could not be placed on this planet. Please select another planet."
+#define YOUR_TURN "It's your turn, "
 
 #define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"

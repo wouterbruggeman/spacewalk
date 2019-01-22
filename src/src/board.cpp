@@ -2,8 +2,6 @@
 
 Board::Board(GameData *gameData, Window *window) : GameObject(window){
 	_gameData = gameData;
-
-	_placeStatus = -1;
 }
 
 Board::~Board(){
@@ -36,11 +34,7 @@ void Board::initBodies(){
 
 void Board::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x, y);
-	if(_placeStatus == 1){
-		_window->addText(x + MARGIN_X, y + MARGIN_Y, PLACE_SUCCESS);
-	}else if(_placeStatus == 0){
-		_window->addText(x + MARGIN_X, y + MARGIN_Y, PLACE_FAIL);
-	}
+	_window->addText(x + MARGIN_X, y + MARGIN_Y, _statusMessage);
 
 	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
 		_bodies[i]->draw(_selectedBody == i);
@@ -67,18 +61,22 @@ void Board::moveSelection(bool right){
 	}
 }
 
-void Board::placeSpaceShip(int index){
-	//Reset the status
-	_placeStatus = -1;
-
+bool Board::placeSpaceShip(int index){
 	SpaceShip *s = _gameData->activePlayer->getSpaceShip(index);
 
 	//Body is always a planet
 	Planet *p = (Planet*) _bodies[_selectedBody];
-	_placeStatus = p->addSpaceShip(s);
-
-	//If the ship was placed
-	if(_placeStatus){
+	if(p->addSpaceShip(s)){
+		//Ship was placed
 		s->setState(SpaceShip::PLACED);
+		return true;
+	}else{
+		//Ship could not be placed
+		setStatusMessage(PLACE_FAIL);
+		return false;
 	}
+}
+
+void Board::setStatusMessage(string message){
+	_statusMessage = message;
 }

@@ -63,16 +63,25 @@ void PlaceScreen::placeSpaceShipOnBoard(){
 			nextScreen();
 			return;
 		}
-
-		//Switch to the next player
-		_gameData->activePlayer = _gameData->p2;
+		switchPlayer();
 		return;
 	}
 
 	//Place the ship
-	_gameData->board->placeSpaceShip(shipIndex);
+	if(_gameData->board->placeSpaceShip(shipIndex)){
+		switchPlayer();
+	}
 }
 
 void PlaceScreen::nextScreen(){
 	_gameData->currentScreen = new MoveScreen(_gameData, _window);
+}
+
+void PlaceScreen::switchPlayer(){
+	if(_gameData->activePlayer == _gameData->p1){
+		_gameData->activePlayer = _gameData->p2;
+	}else{
+		_gameData->activePlayer = _gameData->p1;
+	}
+	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
 }

@@ -20,12 +20,13 @@ class Board : public GameObject{
 
 		void initBodies();
 		void moveSelection(bool right);
-		void placeSpaceShip(int index);
+		bool placeSpaceShip(int index);
+
+		void setStatusMessage(string message);
 
 	private:
-
 		//Variables
-		int _placeStatus;
+		string _statusMessage;
 
 		int _selectedBody;
 		GameObject *_bodies[AMOUNT_OF_BODIES];
