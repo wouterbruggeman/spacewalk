@@ -49,6 +49,9 @@ void PlaceScreen::handleInput(){
 		_gameData->board->moveSelection(false);
 	}else if(c == ' '){
 		placeSpaceShipOnBoard();
+
+		//Go to the next screen if needed
+		nextScreen();
 	}
 }
 
@@ -59,10 +62,6 @@ void PlaceScreen::placeSpaceShipOnBoard(){
 	//If there is no unplaced ship left
 	if(shipIndex == -1){
 		//Check if we need to switch to the next screen.
-		if(_gameData->activePlayer == _gameData->p2){
-			nextScreen();
-			return;
-		}
 		switchPlayer();
 		return;
 	}
@@ -74,7 +73,12 @@ void PlaceScreen::placeSpaceShipOnBoard(){
 }
 
 void PlaceScreen::nextScreen(){
-	_gameData->currentScreen = new MoveScreen(_gameData, _window);
+	int p1Index = _gameData->p1->getTopUnplacedSpaceShipIndex();
+	int p2Index = _gameData->p2->getTopUnplacedSpaceShipIndex();
+	if((p1Index == -1) && (p2Index == -1)){
+		//Switch the screen
+		_gameData->currentScreen = new MoveScreen(_gameData, _window);
+	}
 }
 
 void PlaceScreen::switchPlayer(){
