@@ -10,7 +10,7 @@ all:
 debug:
 	reset
 	$(CC) -I $(IDIR) $(SRCDIR)/* -o $(EXECUTABLE_NAME) $(LIBS) -g
-	gdb ./$(EXECUTABLE_NAME)
+	gdb -q ./$(EXECUTABLE_NAME)
 run:
 	$(CC) -I $(IDIR) $(SRCDIR)/* -o $(EXECUTABLE_NAME) $(LIBS)
 	./$(EXECUTABLE_NAME)
