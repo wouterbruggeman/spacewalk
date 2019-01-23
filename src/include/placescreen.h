@@ -18,8 +18,9 @@ class PlaceScreen : public Screen{
 	private:
 		//Functions
 		void placeSpaceShipOnBoard();
+		bool playersHaveUnplacedShips();
 		void nextScreen();
-		void switchPlayer();
+		void nextPlayer();
 
 		//Variables
 		ShipView *_shipView;

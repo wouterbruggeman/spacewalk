@@ -15,8 +15,9 @@ class PlayerView : public GameObject{
 		PlayerView(GameData *gameData, Window *window);
 		using GameObject::draw;
 		void drawAtPos(int x, int y, bool selected = false);
-		void drawMinimal();
+		void setLocation(int x, int y);
 	private:
+		//Variables
 		GameData *_gameData;
 
 };

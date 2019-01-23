@@ -17,10 +17,6 @@ void Screen::draw(){
 
 }
 
-void Screen::nextScreen(){
-
-}
-
 void Screen::drawStars(int probability){
 	for(int y = 0; y < _window->getSizeY(); y++){
 		for(int x = 0; x < _window->getSizeX(); x++){
@@ -32,5 +28,13 @@ void Screen::drawStars(int probability){
 				}
 			}
 		}
+	}
+}
+
+void Screen::nextPlayer(){
+	if(_gameData->activePlayer == _gameData->p1){
+		_gameData->activePlayer = _gameData->p2;
+	}else{
+		_gameData->activePlayer = _gameData->p1;
 	}
 }

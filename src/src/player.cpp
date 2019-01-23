@@ -27,7 +27,11 @@ Player::~Player(){
 }
 
 void Player::drawAtPos(int x, int y, bool selected){
+	//Draw name
+	_window->addText(x, y, this->getName(), this->getColor(selected));
 
+	//Draw amount of chips
+	_window->addText(x + 1, y + 1, PLAYER_DRAW_CHIPS + to_string(this->getChips()));
 }
 
 void Player::setName(string name){

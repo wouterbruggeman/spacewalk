@@ -18,11 +18,12 @@ class Screen{
 		virtual ~Screen() = 0;
 
 		virtual void draw() = 0;
-		virtual void nextScreen();
 		virtual void handleInput() = 0;
 	protected:
 		//Functions
 		void drawStars(int probability);
+		virtual void nextScreen() = 0;
+		void nextPlayer();
 
 		//Variables
 		Window *_window;

@@ -10,11 +10,13 @@ Popup::Popup(Window *window) : GameObject(window){
 
 void Popup::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x,y);
-	_window->addText(x + 1, y + 1,_message);
+	for(int i = 0; i < MESSAGE_SIZE_Y; i++){
+		_window->addText(x + 1, y + 1 + i, _message[i]);
+	}
 }
 
-void Popup::setMessage(string str){
-	_message = str;
+void Popup::setMessage(string str, int index){
+	_message[index] = str;
 }
 
 string Popup::getString(int x, int y, int n){
@@ -27,11 +29,13 @@ string Popup::getString(int x, int y, int n){
 
 bool Popup::getBool(){
 	this->draw();
+	_window->addText(_posX + 1, _posY + (POPUP_SIZE_Y - 2), POPUP_BOOL_ANSWERS);
 
-	string answer = this->getString(_message.size() + 2, 1, 1);
-	if(answer == "y"){
+	char answer = getch();
+
+	if(answer == 'y' || answer == 'Y'){
 		return true;
-	}else if(answer == "n"){
+	}else if(answer == 'n' || answer == 'N'){
 		return false;
 	}else{
 		return this->getBool();

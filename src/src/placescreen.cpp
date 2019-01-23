@@ -51,7 +51,9 @@ void PlaceScreen::handleInput(){
 		placeSpaceShipOnBoard();
 
 		//Go to the next screen if needed
-		nextScreen();
+		if(!playersHaveUnplacedShips()){
+			nextScreen();
+		}
 	}
 }
 
@@ -61,31 +63,30 @@ void PlaceScreen::placeSpaceShipOnBoard(){
 
 	//If there is no unplaced ship left
 	if(shipIndex == -1){
-		//Check if we need to switch to the next screen.
-		switchPlayer();
+		//Check if we need to switch to the next player.
+		nextPlayer();
 		return;
 	}
 
 	//Place the ship
 	if(_gameData->board->placeSpaceShip(shipIndex)){
-		switchPlayer();
+		//If the ship was placed go to the next player
+		nextPlayer();
 	}
+}
+
+bool PlaceScreen::playersHaveUnplacedShips(){
+	int p1Index = _gameData->p1->getTopUnplacedSpaceShipIndex();
+	int p2Index = _gameData->p2->getTopUnplacedSpaceShipIndex();
+	return ((p1Index != -1) || (p2Index != -1));
 }
 
 void PlaceScreen::nextScreen(){
-	int p1Index = _gameData->p1->getTopUnplacedSpaceShipIndex();
-	int p2Index = _gameData->p2->getTopUnplacedSpaceShipIndex();
-	if((p1Index == -1) && (p2Index == -1)){
-		//Switch the screen
-		_gameData->currentScreen = new MoveScreen(_gameData, _window);
-	}
+	//Switch the screen
+	_gameData->currentScreen = new MoveScreen(_gameData, _window);
 }
 
-void PlaceScreen::switchPlayer(){
-	if(_gameData->activePlayer == _gameData->p1){
-		_gameData->activePlayer = _gameData->p2;
-	}else{
-		_gameData->activePlayer = _gameData->p1;
-	}
+void PlaceScreen::nextPlayer(){
+	Screen::nextPlayer();
 	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
 }

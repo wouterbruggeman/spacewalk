@@ -17,10 +17,15 @@
 #define PLACE_FAIL "This ship could not be placed on this planet. Please select another planet."
 #define YOUR_TURN "It's your turn, "
 
-#define PLAYER_OPTIONS_SKIP "Would you like to skip your turn? (y/n)"
+#define PLAYER_OPTIONS_SKIP_1 "Would you like to skip your turn?"
+#define PLAYER_OPTIONS_SKIP_2 "This will cost 1 Chip. You currently have "
+#define PLAYER_OPTIONS_SKIP_3 " chips."
+
+#define POPUP_BOOL_ANSWERS "Press Y for Yes and N for No."
 
 #define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"
+#define PLAYER_DRAW_CHIPS "Chips: "
 
 #define SPACESHIP_TOP_CHAR ">"
 #define SPACESHIP_OTHER_CHAR "="
@@ -30,6 +35,6 @@
 #define STAR_2 "."
 
 #define INFO_AUTHOR "Wouter Bruggeman"
-#define INFO_VERSION "spacewalk v0.1.2"
+#define INFO_VERSION "spacewalk v0.2.0"
 
 #endif

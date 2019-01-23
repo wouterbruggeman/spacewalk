@@ -10,14 +10,18 @@ void PlayerView::drawAtPos(int x, int y, bool selected){
 	//Draw title
 	_window->addText(x + 2, y + 1, PLAYERVIEW_TITLE, COLOR_BLUE_BLACK);
 
-	int textColor;
-
 	//Draw player 1
-	textColor = _gameData->p1->getColor(_gameData->p1 == _gameData->activePlayer);
-	_window->addText(_posX + 2, _posY + 3, _gameData->p1->getName(), textColor);
+	_gameData->p1->draw(_gameData->p1 == _gameData->activePlayer);
 
 	//Draw player2
-	textColor = _gameData->p2->getColor(_gameData->p2 == _gameData->activePlayer);
-	_window->addText(_posX + 2, _posY + 4, _gameData->p2->getName(), textColor);
+	_gameData->p2->draw(_gameData->p2 == _gameData->activePlayer);
+}
 
+void PlayerView::setLocation(int x, int y){
+	_posX = x;
+	_posY = y;
+
+	//Update the positions of the players
+	_gameData->p1->setLocation(_posX + 2, _posY + 3);
+	_gameData->p2->setLocation(_posX + 2, _posY + 6);
 }

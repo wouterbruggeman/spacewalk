@@ -12,6 +12,12 @@ class MoveScreen : public Screen{
 		void draw();
 		void handleInput();
 	private:
+		//Functions
+		bool playerSkipsTurn();
+		void nextScreen();
+		void nextPlayer();
+
+		//Variables
 		Popup *_popup;
 
 };
