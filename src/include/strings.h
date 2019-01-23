@@ -23,13 +23,19 @@
 
 #define POPUP_BOOL_ANSWERS "Press Y for Yes and N for No."
 
-#define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"
+#define PLAYERVIEW_TITLE "Players:"
+
 #define PLAYER_DRAW_CHIPS "Chips: "
+#define PLAYER_DRAW_SHIPS "SpaceShips: "
+#define PLAYER_DRAW_SHIPS_TOTAL "Total: "
+#define PLAYER_DRAW_SHIPS_DESTROYED "Destroyed: "
 
 #define SPACESHIP_TOP_CHAR ">"
 #define SPACESHIP_OTHER_CHAR "="
 #define PLANET_CONTENT "@@"
+#define INDENT_1 "|"
+#define INDENT_2 "|-"
 
 #define STAR_1 "*"
 #define STAR_2 "."

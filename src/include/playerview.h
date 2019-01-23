@@ -6,7 +6,7 @@
 #include "strings.h"
 #include "gamedata.h"
 
-#define PLAYERVIEW_SIZE_X 20
+#define PLAYERVIEW_SIZE_X 25
 
 struct GameData;
 

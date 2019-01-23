@@ -23,5 +23,5 @@ void PlayerView::setLocation(int x, int y){
 
 	//Update the positions of the players
 	_gameData->p1->setLocation(_posX + 2, _posY + 3);
-	_gameData->p2->setLocation(_posX + 2, _posY + 6);
+	_gameData->p2->setLocation(_posX + 2, _posY + 10);
 }

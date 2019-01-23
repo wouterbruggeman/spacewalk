@@ -31,7 +31,21 @@ void Player::drawAtPos(int x, int y, bool selected){
 	_window->addText(x, y, this->getName(), this->getColor(selected));
 
 	//Draw amount of chips
-	_window->addText(x + 1, y + 1, PLAYER_DRAW_CHIPS + to_string(this->getChips()));
+	_window->addText(x, y + 1, (string)INDENT_2 +
+		(string)PLAYER_DRAW_CHIPS + to_string(this->getChips()));
+
+	//Draw empty line
+	_window->addText(x, y + 2, (string)INDENT_1);
+
+	//Draw amount of spaceships
+	_window->addText(x, y + 3, (string)INDENT_2 +
+		(string)PLAYER_DRAW_SHIPS);
+
+	_window->addText(x + 2, y + 4, (string)INDENT_2 + (string)PLAYER_DRAW_SHIPS_TOTAL +
+		to_string(SPACESHIP_AMOUNT));
+
+	_window->addText(x + 2, y + 5, (string)INDENT_2 + (string)PLAYER_DRAW_SHIPS_DESTROYED +
+		to_string(this->getTotalDestroyedSpaceShips()));
 }
 
 void Player::setName(string name){
@@ -63,4 +77,14 @@ int Player::getTopUnplacedSpaceShipIndex(){
 		}
 	}
 	return -1;
+}
+
+int Player::getTotalDestroyedSpaceShips(){
+	int total = 0;
+	for(int i = 0; i < SPACESHIP_AMOUNT; i++){
+		if(_spaceShips[i]->getState() == SpaceShip::DESTROYED){
+			total++;
+		}
+	}
+	return total;
 }

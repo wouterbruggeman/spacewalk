@@ -33,6 +33,7 @@ class Player : public GameObject{
 		//Spaceship content functions
 		SpaceShip* getSpaceShip(int index);
 		int getTopUnplacedSpaceShipIndex();
+		int getTotalDestroyedSpaceShips();
 
 	private:
 		//Variables
