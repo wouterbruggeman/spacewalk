@@ -7,6 +7,7 @@ MoveScreen::MoveScreen(GameData *gameData, Window *window) : Screen(gameData, wi
 		MARGIN_Y
 	);
 	_popup = new Popup(_window);
+	_turnPhase = 0;
 }
 
 MoveScreen::~MoveScreen(){
@@ -18,6 +19,12 @@ void MoveScreen::draw(){
 
 	//Draw some info
 	_window->addText(MARGIN_X, MARGIN_Y, MOVE_INFO_1);
+	_window->addText(MARGIN_X, MARGIN_Y + 1, MOVE_INFO_2);
+	_window->addText(MARGIN_X, MARGIN_Y + 2, MOVE_INFO_3);
+	_window->addText(MARGIN_X, MARGIN_Y + 3, MOVE_INFO_4);
+	_window->addText(MARGIN_X, MARGIN_Y + 4, MOVE_INFO_5);
+	_window->addText(MARGIN_X, MARGIN_Y + 5, MOVE_INFO_6);
+	_window->addText(MARGIN_X, MARGIN_Y + 6, MOVE_INFO_7);
 
 	//Draw the other elements
 	_gameData->board->draw();
@@ -25,26 +32,65 @@ void MoveScreen::draw(){
 }
 
 void MoveScreen::handleInput(){
+	switch(_turnPhase){
+		case MoveScreen::BEGIN:
+			handleBeginPhase();
+			break;
+		case MoveScreen::SELECTING:
+			handleSelectingPhase();
+			break;
+		case MoveScreen::MOVING:
+			handleMovingPhase();
+			break;
+		case MoveScreen::END:
+			handleEndPhase();
+			break;
+		default:
+			break;
+	}
+}
+
+void MoveScreen::handleBeginPhase(){
 	if(playerSkipsTurn()){
 		//Next player
 		nextPlayer();
-
-		//Do not ask for more input if the player decides to skip his turn
-		return;
+	}else{
+		_turnPhase++;
 	}
+}
 
-	//Ask for more input
+void MoveScreen::handleSelectingPhase(){
 	int c = getch();
 
 	//Select and place the boards
 	if(c == KEY_RIGHT){
-		_gameData->board->moveSelection(true);
+		_gameData->board->moveSelection(Board::RIGHT);
 	}else if(c == KEY_LEFT){
-		_gameData->board->moveSelection(false);
+		_gameData->board->moveSelection(Board::LEFT);
 	}else if(c == ' '){
-		//_gameData->board->grabSpaceShips();
+		//Grab the spaceships on the selected planet
+		if(_gameData->board->grabSpaceShips()){
+			_turnPhase++;
+		}
+	}
+}
+
+void MoveScreen::handleMovingPhase(){
+	int c = getch();
+
+	//Select and place the boards
+	if(c == KEY_UP){
+		_gameData->board->moveSelection(Board::UP);
+	}else if(c == KEY_DOWN){
+		_gameData->board->moveSelection(Board::DOWN);
+	}else if(c == ' '){
+		_gameData->board->moveGrabbedShips();
 	}
 
+}
+
+void MoveScreen::handleEndPhase(){
+	//TODO: Ask if the player would like to get a new turn
 	nextPlayer();
 }
 
@@ -79,4 +125,5 @@ void MoveScreen::nextScreen(){
 void MoveScreen::nextPlayer(){
 	Screen::nextPlayer();
 	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
+	_turnPhase = 0;
 }

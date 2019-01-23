@@ -17,21 +17,33 @@ class Board : public GameObject{
 
 		using GameObject::draw;
 		void drawAtPos(int x, int y, bool selected = false);
+		void setStatusMessage(string message);
 
 		void initBodies();
-		void moveSelection(bool right);
+		void moveSelection(int direction);
 		bool placeSpaceShip(int index);
+		bool grabSpaceShips();
 
-		void setStatusMessage(string message);
+		enum MoveDirection{
+			LEFT = 0,
+			RIGHT = 1,
+			UP = 2,
+			DOWN = 3,
+
+		};
 
 	private:
 		//Variables
 		string _statusMessage;
 
 		int _selectedBody;
+		int _selectedSpaceShip;
 		GameObject *_bodies[AMOUNT_OF_BODIES];
+		vector<SpaceShip *> _grabbedSpaceShips;
 
+		//Pointer to gamedata
 		GameData *_gameData;
+
 
 };
 #endif

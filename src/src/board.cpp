@@ -41,8 +41,12 @@ void Board::drawAtPos(int x, int y, bool selected){
 	}
 }
 
-void Board::moveSelection(bool right){
-	if(right){
+void Board::setStatusMessage(string message){
+	_statusMessage = message;
+}
+
+void Board::moveSelection(int direction){
+	if(direction == Board::RIGHT){
 		_selectedBody++;
 		if((_selectedBody % 7) == 0){
 			_selectedBody++;
@@ -50,7 +54,7 @@ void Board::moveSelection(bool right){
 		if(_selectedBody > AMOUNT_OF_BODIES){
 			_selectedBody = 1;
 		}
-	}else{
+	}else if(direction == Board::LEFT){
 		_selectedBody--;
 		if((_selectedBody % 7) == 0){
 			_selectedBody--;
@@ -58,6 +62,16 @@ void Board::moveSelection(bool right){
 		if(_selectedBody < 0){
 			_selectedBody = AMOUNT_OF_BODIES - 1;
 		}
+	}else if(direction == Board::UP){
+		//Get the selected Body which is always a planet
+		Planet *p = (Planet*) _bodies[_selectedBody];
+		p->moveSelection(true);
+
+
+	}else if(direction == Board::DOWN){
+		//Get the selected Body which is always a planet
+		Planet *p = (Planet*) _bodies[_selectedBody];
+		p->moveSelection(false);
 	}
 }
 
@@ -77,6 +91,20 @@ bool Board::placeSpaceShip(int index){
 	}
 }
 
-void Board::setStatusMessage(string message){
-	_statusMessage = message;
+bool Board::grabSpaceShips(){
+	//Get the selected Body which is always a planet
+	Planet *p = (Planet*) _bodies[_selectedBody];
+
+	//If the planet contains spaceships:
+	if(!p->containsSpaceShips()){
+		setStatusMessage(GRAB_FAIL);
+		return false;
+	}
+
+	//Select the first spaceship.
+	p->selectSpaceShip(0);
+
+	_grabbedSpaceShips = p->getSpaceShips();
+	setStatusMessage(GRAB_SUCCESS);
+	return true;
 }

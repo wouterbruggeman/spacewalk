@@ -6,16 +6,24 @@
 #define WELCOME_ENTER_NAME_1 "Please enter your name (Player 1):"
 #define WELCOME_ENTER_NAME_2 "Please enter the name of Player 2:"
 
-#define PLACE_INFO_1 "In this phrase you'll have to place your spaceships on the planets."
+#define PLACE_INFO_1 "In this phase you'll have to place your spaceships on the planets."
 #define PLACE_INFO_2 "You'll start with your biggest spaceship, which can be seen in the "
 #define PLACE_INFO_3 "'SpaceShips' panel at the right side of your screen."
 #define PLACE_INFO_4 "Please select a planet with your arrow keys. Press the spacebar to"
 #define PLACE_INFO_5 "place the selected spaceship on the selected planet."
 
-#define MOVE_INFO_1 "In this phrase you'll have to move your spaceships."
+#define MOVE_INFO_1 "In this phase you'll have to move your spaceships."
+#define MOVE_INFO_2 "You can skip your turn or select a planet."
+#define MOVE_INFO_3 "After you've selected a planet, the spaceships on this planet"
+#define MOVE_INFO_4 "will be moved one by one to the next planets, starting with"
+#define MOVE_INFO_5 "the biggest spaceship."
+#define MOVE_INFO_6 "When more spaceships with the same size have landed on a planet"
+#define MOVE_INFO_7 "you have the choise to pick yours or the other player's spaceship."
 
 #define PLACE_FAIL "This ship could not be placed on this planet. Please select another planet."
 #define YOUR_TURN "It's your turn, "
+#define GRAB_FAIL "No spaceships have landed on this planet yet. Please select another planet."
+#define GRAB_SUCCESS "Please select the spaceship that should be moved first with your arrow keys"
 
 #define PLAYER_OPTIONS_SKIP_1 "Would you like to skip your turn?"
 #define PLAYER_OPTIONS_SKIP_2 "This will cost 1 Chip. You currently have "
@@ -41,6 +49,6 @@
 #define STAR_2 "."
 
 #define INFO_AUTHOR "Wouter Bruggeman"
-#define INFO_VERSION "spacewalk v0.2.0"
+#define INFO_VERSION "spacewalk v0.2.1"
 
 #endif
