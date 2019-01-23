@@ -28,8 +28,8 @@ void Board::initBodies(){
 		_bodies[i]->setLocation(startX + (i * 2 * _bodies[i]->getSizeX()), startY);
 	}
 
-	//First item is selected
-	_selectedBody = 1;
+	//Reset to initialize
+	resetSelection();
 }
 
 void Board::drawAtPos(int x, int y, bool selected){
@@ -54,6 +54,8 @@ void Board::moveSelection(int direction){
 		if(_selectedBody > AMOUNT_OF_BODIES){
 			_selectedBody = 1;
 		}
+		_selectedSpaceShipIndex = -1;
+
 	}else if(direction == Board::LEFT){
 		_selectedBody--;
 		if((_selectedBody % 7) == 0){
@@ -62,17 +64,32 @@ void Board::moveSelection(int direction){
 		if(_selectedBody < 0){
 			_selectedBody = AMOUNT_OF_BODIES - 1;
 		}
+		_selectedSpaceShipIndex = -1;
+
 	}else if(direction == Board::UP){
-		//Get the selected Body which is always a planet
-		Planet *p = (Planet*) _bodies[_selectedBody];
-		p->moveSelection(true);
+
+		//If the other ship is in range and size equals
+		if((_selectedSpaceShipIndex < _grabbedSpaceShips.size() - 1)
+			&& (_grabbedSpaceShips[_selectedSpaceShipIndex + 1]->sizeEquals(
+				_grabbedSpaceShips[_selectedSpaceShipIndex])))
+		{
+			_selectedSpaceShipIndex++;
+		}
 
 
 	}else if(direction == Board::DOWN){
-		//Get the selected Body which is always a planet
-		Planet *p = (Planet*) _bodies[_selectedBody];
-		p->moveSelection(false);
+		//If the 2 spaceships are equal and in range
+		if((_selectedSpaceShipIndex > 0)
+			&& (_grabbedSpaceShips[_selectedSpaceShipIndex - 1]->sizeEquals(
+				_grabbedSpaceShips[_selectedSpaceShipIndex])))
+		{
+			_selectedSpaceShipIndex--;
+		}
 	}
+	//Get the selected Body which is always a planet
+	Planet *p = (Planet*) _bodies[_selectedBody];
+	p->selectSpaceShip(_selectedSpaceShipIndex);
+
 }
 
 bool Board::placeSpaceShip(int index){
@@ -102,9 +119,24 @@ bool Board::grabSpaceShips(){
 	}
 
 	//Select the first spaceship.
-	p->selectSpaceShip(0);
+	_selectedSpaceShipIndex = 0;
+	p->selectSpaceShip(_selectedSpaceShipIndex);
 
 	_grabbedSpaceShips = p->getSpaceShips();
 	setStatusMessage(GRAB_SUCCESS);
+
 	return true;
+}
+
+void Board::moveGrabbedShips(){
+	Planet *p = (Planet*) _bodies[_selectedBody];
+
+	//Reset the index
+	resetSelection();
+
+}
+
+void Board::resetSelection(){
+	_selectedBody = 1;
+	_selectedSpaceShipIndex = -1;
 }

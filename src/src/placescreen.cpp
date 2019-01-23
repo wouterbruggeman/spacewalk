@@ -44,9 +44,9 @@ void PlaceScreen::handleInput(){
 
 	//Select and place the boards
 	if(c == KEY_RIGHT){
-		_gameData->board->moveSelection(true);
+		_gameData->board->moveSelection(Board::RIGHT);
 	}else if(c == KEY_LEFT){
-		_gameData->board->moveSelection(false);
+		_gameData->board->moveSelection(Board::LEFT);
 	}else if(c == ' '){
 		placeSpaceShipOnBoard();
 

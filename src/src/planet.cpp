@@ -39,9 +39,7 @@ vector<SpaceShip *> Planet::getSpaceShips(){
 //returns true if vector already contains ship with size and owner, otherwise false
 bool Planet::vectorContainsShipType(SpaceShip *s){
 	for(int i = 0; i < _spaceShips.size(); i++){
-		if(_spaceShips[i]->getSize() == s->getSize()
-			&& _spaceShips[i]->getOwner() == s->getOwner())
-		{
+		if(_spaceShips[i]->sizeEquals(s) && _spaceShips[i]->ownerEquals(s)){
 			return true;
 		}
 	}
@@ -50,27 +48,4 @@ bool Planet::vectorContainsShipType(SpaceShip *s){
 
 void Planet::selectSpaceShip(int index){
 	_selectedSpaceShipIndex = index;
-}
-
-void Planet::moveSelection(bool up){
-	//Get the current selected spaceship
-	SpaceShip *selection = _spaceShips[_selectedSpaceShipIndex];
-
-	if(up){
-		//If the 2 spaceships are equal and in range
-		if((_selectedSpaceShipIndex < _spaceShips.size() - 1)
-			&& (_spaceShips[_selectedSpaceShipIndex + 1]->getSize()
-				== selection->getSize()))
-		{
-			_selectedSpaceShipIndex++;
-		}
-	}else{
-		//If the 2 spaceships are equal and in range
-		if((_selectedSpaceShipIndex > 0)
-			&& (_spaceShips[_selectedSpaceShipIndex - 1]->getSize()
-				== selection->getSize()))
-		{
-			_selectedSpaceShipIndex--;
-		}
-	}
 }

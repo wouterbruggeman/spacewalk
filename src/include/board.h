@@ -23,6 +23,7 @@ class Board : public GameObject{
 		void moveSelection(int direction);
 		bool placeSpaceShip(int index);
 		bool grabSpaceShips();
+		void moveGrabbedShips();
 
 		enum MoveDirection{
 			LEFT = 0,
@@ -37,7 +38,7 @@ class Board : public GameObject{
 		string _statusMessage;
 
 		int _selectedBody;
-		int _selectedSpaceShip;
+		int _selectedSpaceShipIndex;
 		GameObject *_bodies[AMOUNT_OF_BODIES];
 		vector<SpaceShip *> _grabbedSpaceShips;
 

@@ -22,6 +22,9 @@ class SpaceShip : public GameObject{
 		unsigned char getSize();
 		Player* getOwner();
 
+		bool sizeEquals(SpaceShip *s);
+		bool ownerEquals(SpaceShip *s);
+
 		enum Size{
 			SMALL = 1,
 			MEDIUM = 3,

@@ -36,3 +36,11 @@ unsigned char SpaceShip::getSize(){
 Player* SpaceShip::getOwner(){
 	return _owner;
 }
+
+bool SpaceShip::sizeEquals(SpaceShip *s){
+	return (s->getSize() == this->getSize());
+}
+
+bool SpaceShip::ownerEquals(SpaceShip *s){
+	return (s->getOwner() == this->getOwner());
+}

@@ -85,6 +85,7 @@ void MoveScreen::handleMovingPhase(){
 		_gameData->board->moveSelection(Board::DOWN);
 	}else if(c == ' '){
 		_gameData->board->moveGrabbedShips();
+		_turnPhase++;
 	}
 
 }

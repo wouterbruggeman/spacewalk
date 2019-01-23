@@ -49,6 +49,6 @@
 #define STAR_2 "."
 
 #define INFO_AUTHOR "Wouter Bruggeman"
-#define INFO_VERSION "spacewalk v0.2.1"
+#define INFO_VERSION "Spacewalk v0.2.1"
 
 #endif

@@ -19,7 +19,6 @@ class Planet : public GameObject{
 		vector<SpaceShip *> getSpaceShips();
 
 		void selectSpaceShip(int index);
-		void moveSelection(bool up);//TODO: Move this function to board
 
 	private:
 		bool vectorContainsShipType(SpaceShip *s);
