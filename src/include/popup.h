@@ -6,6 +6,9 @@
 
 using namespace std;
 
+#define POPUP_SIZE_X 55
+#define POPUP_SIZE_Y 8
+
 class Popup : public GameObject{
 	public:
 		Popup(Window *window);
@@ -13,7 +16,9 @@ class Popup : public GameObject{
 		void drawAtPos(int x, int y, bool selected = false);
 
 		void setMessage(string str);
-		string getString();
+		string getString(int x = 1, int y = 2, int n = 50);
+		bool getBool();
+
 	private:
 		string _message;
 };

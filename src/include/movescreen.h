@@ -3,6 +3,7 @@
 
 #include "screen.h"
 #include "string.h"
+#include "popup.h"
 
 class MoveScreen : public Screen{
 	public:
@@ -11,6 +12,7 @@ class MoveScreen : public Screen{
 		void draw();
 		void handleInput();
 	private:
+		Popup *_popup;
 
 };
 #endif

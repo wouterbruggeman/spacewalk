@@ -26,6 +26,10 @@ class Player : public GameObject{
 		void setName(string name);
 		string getName();
 
+		//Chips functions
+		void setChips(int amount);
+		int getChips();
+
 		//Spaceship content functions
 		SpaceShip* getSpaceShip(int index);
 		int getTopUnplacedSpaceShipIndex();
@@ -34,6 +38,7 @@ class Player : public GameObject{
 		//Variables
 		string _name;
 		SpaceShip *_spaceShips[SPACESHIP_AMOUNT];
+		int _chips;
 
 };
 #endif

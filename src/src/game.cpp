@@ -11,9 +11,12 @@ Game::Game(){
 	_gameData->p1 = new Player(COLOR_BLUE_BLACK, COLOR_BLACK_BLUE, _window);
 	_gameData->p2 = new Player(COLOR_GREEN_BLACK, COLOR_BLACK_GREEN, _window);
 	_gameData->activePlayer = _gameData->p1;
+	//There are 2 players in this game, so every player will be given 4 chips
+	_gameData->p1->setChips(4);
+	_gameData->p2->setChips(4);
 
-	//Create playerview, location is dependent on the shipview in the placescreen, this will
-	//be set later
+	//Create playerview, location is dependent on the shipview in the placescreen,
+	//this will be set later
 	_gameData->playerView = new PlayerView(_gameData, _window);
 	_gameData->playerView->setSize(PLAYERVIEW_SIZE_X, (_window->getSizeY() / 2) - MARGIN_Y);
 

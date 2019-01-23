@@ -17,6 +17,8 @@
 #define PLACE_FAIL "This ship could not be placed on this planet. Please select another planet."
 #define YOUR_TURN "It's your turn, "
 
+#define PLAYER_OPTIONS_SKIP "Would you like to skip your turn? (y/n)"
+
 #define PLAYERVIEW_TITLE "Players:"
 #define SHIPVIEW_TITLE "Spaceships:"
 

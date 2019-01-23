@@ -16,6 +16,8 @@ Player::Player(int color, int colorSelected, Window *window)
 		_spaceShips[i] = new SpaceShip(SpaceShip::SMALL,
 			this, _window, color, colorSelected);
 	}
+
+	_chips = 0;
 }
 
 Player::~Player(){
@@ -34,6 +36,14 @@ void Player::setName(string name){
 
 string Player::getName(){
 	return _name;
+}
+
+void Player::setChips(int amount){
+	_chips = amount;
+}
+
+int Player::getChips(){
+	return _chips;
 }
 
 SpaceShip* Player::getSpaceShip(int index){

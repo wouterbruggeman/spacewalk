@@ -6,6 +6,8 @@ MoveScreen::MoveScreen(GameData *gameData, Window *window) : Screen(gameData, wi
 		(_window->getSizeX() - _gameData->playerView->getSizeX()) - MARGIN_X,
 		MARGIN_Y
 	);
+	_popup = new Popup(_window);
+	_popup->setMessage(PLAYER_OPTIONS_SKIP);
 }
 
 MoveScreen::~MoveScreen(){
@@ -24,5 +26,6 @@ void MoveScreen::draw(){
 }
 
 void MoveScreen::handleInput(){
-	char c = getch();
+	_popup->getBool();
+	//char c = getch();
 }
