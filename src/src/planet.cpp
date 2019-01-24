@@ -32,6 +32,16 @@ bool Planet::containsSpaceShips(){
 	return (_spaceShips.size() > 0);
 }
 
+bool Planet::containsSpaceShipsOfPlayer(Player *p){
+	for(int i = 0; i < _spaceShips.size(); i++){
+		if(_spaceShips[i]->getOwner() == p){
+			//Return true if the player has spaceships on this planet.
+			return true;
+		}
+	}
+	return false;
+}
+
 vector<SpaceShip *> Planet::getSpaceShips(){
 	return _spaceShips;
 }

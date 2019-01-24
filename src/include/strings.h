@@ -20,10 +20,14 @@
 #define MOVE_INFO_6 "When more spaceships with the same size have landed on a planet"
 #define MOVE_INFO_7 "you have the choise to pick yours or the other player's spaceship."
 
-#define PLACE_FAIL "This ship could not be placed on this planet. Please select another planet."
+#define PLACE_FAIL "This ship could not be placed on this planet. "
 #define YOUR_TURN "It's your turn, "
-#define GRAB_FAIL "No spaceships have landed on this planet yet. Please select another planet."
-#define GRAB_SUCCESS "Please select the spaceship that should be moved first with your arrow keys"
+
+#define GRAB_SUCCESS "Please select the spaceship that should be moved first with your arrow keys."
+#define GRAB_FAIL_SHIPS "No spaceships have landed on this planet yet."
+#define GRAB_FAIL_PLAYER "Your spaceships haven't landed on this planet yet. "
+
+#define SELECT_OTHER_PLANET "Please select another planet. "
 
 #define PLAYER_OPTIONS_SKIP_1 "Would you like to skip your turn?"
 #define PLAYER_OPTIONS_SKIP_2 "This will cost 1 Chip. You currently have "

@@ -16,6 +16,7 @@ class Planet : public GameObject{
 		void removeSpaceShip(SpaceShip *s);
 
 		bool containsSpaceShips();
+		bool containsSpaceShipsOfPlayer(Player *p);
 		vector<SpaceShip *> getSpaceShips();
 
 		void selectSpaceShip(int index);

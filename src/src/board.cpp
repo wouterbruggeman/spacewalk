@@ -92,6 +92,11 @@ void Board::moveSelection(int direction){
 
 }
 
+void Board::resetSelection(){
+	_selectedBody = 1;
+	_selectedSpaceShipIndex = -1;
+}
+
 bool Board::placeSpaceShip(int index){
 	SpaceShip *s = _gameData->activePlayer->getSpaceShip(index);
 
@@ -103,7 +108,7 @@ bool Board::placeSpaceShip(int index){
 		return true;
 	}else{
 		//Ship could not be placed
-		setStatusMessage(PLACE_FAIL);
+		setStatusMessage((string)PLACE_FAIL + (string)SELECT_OTHER_PLANET);
 		return false;
 	}
 }
@@ -114,7 +119,11 @@ bool Board::grabSpaceShips(){
 
 	//If the planet contains spaceships:
 	if(!p->containsSpaceShips()){
-		setStatusMessage(GRAB_FAIL);
+		setStatusMessage((string)GRAB_FAIL_SHIPS + (string)SELECT_OTHER_PLANET);
+		return false;
+	}
+	if(!p->containsSpaceShipsOfPlayer(_gameData->activePlayer)){
+		setStatusMessage((string)GRAB_FAIL_PLAYER + (string)SELECT_OTHER_PLANET);
 		return false;
 	}
 
@@ -130,13 +139,9 @@ bool Board::grabSpaceShips(){
 
 void Board::moveGrabbedShips(){
 	Planet *p = (Planet*) _bodies[_selectedBody];
+	//Do not show the selection anymore //TODO: make this more efficient
+	p->selectSpaceShip(-1);
 
 	//Reset the index
 	resetSelection();
-
-}
-
-void Board::resetSelection(){
-	_selectedBody = 1;
-	_selectedSpaceShipIndex = -1;
 }

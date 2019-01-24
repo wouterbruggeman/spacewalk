@@ -20,10 +20,14 @@ class Board : public GameObject{
 		void setStatusMessage(string message);
 
 		void initBodies();
+		void resetSelection();
 		void moveSelection(int direction);
 		bool placeSpaceShip(int index);
+
+		//Movement phase
 		bool grabSpaceShips();
 		void moveGrabbedShips();
+
 
 		enum MoveDirection{
 			LEFT = 0,
@@ -34,6 +38,7 @@ class Board : public GameObject{
 		};
 
 	private:
+
 		//Variables
 		string _statusMessage;
 

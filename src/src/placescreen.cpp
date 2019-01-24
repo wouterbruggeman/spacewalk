@@ -89,4 +89,5 @@ void PlaceScreen::nextScreen(){
 void PlaceScreen::nextPlayer(){
 	Screen::nextPlayer();
 	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
+	_gameData->board->resetSelection();
 }
