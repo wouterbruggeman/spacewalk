@@ -29,9 +29,10 @@
 
 #define SELECT_OTHER_PLANET "Please select another planet. "
 
-#define PLAYER_OPTIONS_SKIP_1 "Would you like to skip your turn?"
-#define PLAYER_OPTIONS_SKIP_2 "This will cost 1 Chip. You currently have "
-#define PLAYER_OPTIONS_SKIP_3 " chips."
+#define PLAYER_OPTIONS_SKIP "Would you like to skip your turn?"
+#define PLAYER_OPTIONS_NEW_TURN "Would you like to get another turn?"
+#define PLAYER_OPTIONS_COST "This will cost 1 Chip. You currently have "
+#define PLAYER_OPTIONS_CHIPS " chips."
 
 #define POPUP_BOOL_ANSWERS "Press Y for Yes and N for No."
 

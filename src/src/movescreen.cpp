@@ -109,16 +109,16 @@ void MoveScreen::checkMoving(){
 }
 
 void MoveScreen::handleEndPhase(){
-	//TODO: Ask if the player would like to get a new turn
-	nextPlayer();
+	if(!playerGetsNewTurn()){
+		//Switch player
+		nextPlayer();
+	}
+
+	//Always start a new phase
+	_turnPhase = MoveScreen::PHASE_BEGIN;
 }
 
 bool MoveScreen::playerSkipsTurn(){
-	_popup->setMessage(PLAYER_OPTIONS_SKIP_1, 0);
-	_popup->setMessage(
-		PLAYER_OPTIONS_SKIP_2 + to_string(_gameData->activePlayer->getChips()) +
-		PLAYER_OPTIONS_SKIP_3, 1);
-
 	//Get amount of chips
 	int chips = _gameData->activePlayer->getChips();
 
@@ -127,7 +127,37 @@ bool MoveScreen::playerSkipsTurn(){
 		return false;
 	}
 
+	_popup->clearMessage();
+	_popup->setMessage(PLAYER_OPTIONS_SKIP, 0);
+	_popup->setMessage(PLAYER_OPTIONS_COST +
+		to_string(chips) + PLAYER_OPTIONS_CHIPS, 1);
+
+
 	//If the player wants to skip his turn.
+	if(_popup->getBool()){
+		//Decrement the amount of chips the player has.
+		_gameData->activePlayer->setChips(--chips);
+		return true;
+	}
+
+	return false;
+}
+
+bool MoveScreen::playerGetsNewTurn(){
+	//Get amount of chips
+	int chips = _gameData->activePlayer->getChips();
+
+	//If the player does not have enough chips to skip his turn
+	if(chips == 0){
+		return false;
+	}
+
+	_popup->clearMessage();
+	_popup->setMessage(PLAYER_OPTIONS_NEW_TURN, 0);
+	_popup->setMessage(PLAYER_OPTIONS_COST +
+		to_string(chips) + PLAYER_OPTIONS_CHIPS, 1);
+
+	//If the player wants to get another turn.
 	if(_popup->getBool()){
 		//Decrement the amount of chips the player has.
 		_gameData->activePlayer->setChips(--chips);
@@ -144,5 +174,4 @@ void MoveScreen::nextScreen(){
 void MoveScreen::nextPlayer(){
 	Screen::nextPlayer();
 	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
-	_turnPhase = MoveScreen::PHASE_BEGIN;
 }

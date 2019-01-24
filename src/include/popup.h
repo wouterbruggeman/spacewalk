@@ -19,6 +19,8 @@ class Popup : public GameObject{
 		void drawAtPos(int x, int y, bool selected = false);
 
 		void setMessage(string str, int index = 0);
+		void clearMessage();
+
 		string getString(int x = 1, int y = 2, int n = 50);
 		bool getBool();
 

@@ -19,6 +19,12 @@ void Popup::setMessage(string str, int index){
 	_message[index] = str;
 }
 
+void Popup::clearMessage(){
+	for(int i = 0; i < MESSAGE_SIZE_Y; i++){
+		_message[i] = "";
+	}
+}
+
 string Popup::getString(int x, int y, int n){
 	return _window->getString(
 		_posX + x,

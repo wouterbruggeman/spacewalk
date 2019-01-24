@@ -31,6 +31,7 @@ class MoveScreen : public Screen{
 		void checkMoving();
 
 		bool playerSkipsTurn();
+		bool playerGetsNewTurn();
 		void nextScreen();
 		void nextPlayer();
 
