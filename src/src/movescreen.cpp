@@ -29,20 +29,22 @@ void MoveScreen::draw(){
 	//Draw the other elements
 	_gameData->board->draw();
 	_gameData->playerView->draw();
+
+	_window->addText(MARGIN_X, MARGIN_Y + 8, "DEBUG Turn phase: " + to_string(_turnPhase));
 }
 
 void MoveScreen::handleInput(){
 	switch(_turnPhase){
-		case MoveScreen::BEGIN:
+		case MoveScreen::PHASE_BEGIN:
 			handleBeginPhase();
 			break;
-		case MoveScreen::SELECTING:
-			handleSelectingPhase();
+		case MoveScreen::PHASE_SELECTING_PLANET:
+			handleSelectingPlanetPhase();
 			break;
-		case MoveScreen::MOVING:
-			handleMovingPhase();
+		case MoveScreen::PHASE_SELECTING_SPACESHIP:
+			handleSelectingSpaceShipPhase();
 			break;
-		case MoveScreen::END:
+		case MoveScreen::PHASE_END:
 			handleEndPhase();
 			break;
 		default:
@@ -55,39 +57,57 @@ void MoveScreen::handleBeginPhase(){
 		//Next player
 		nextPlayer();
 	}else{
-		_turnPhase++;
+		//Go to the next phase
+		_turnPhase = MoveScreen::PHASE_SELECTING_PLANET;
 	}
 }
 
-void MoveScreen::handleSelectingPhase(){
+void MoveScreen::handleSelectingPlanetPhase(){
 	int c = getch();
 
-	//Select and place the boards
+	//Select a planet with the arrow keys
 	if(c == KEY_RIGHT){
 		_gameData->board->moveSelection(Board::RIGHT);
 	}else if(c == KEY_LEFT){
 		_gameData->board->moveSelection(Board::LEFT);
 	}else if(c == ' '){
-		//Grab the spaceships on the selected planet
 		if(_gameData->board->grabSpaceShips()){
-			_turnPhase++;
+			checkMoving();
 		}
 	}
 }
 
-void MoveScreen::handleMovingPhase(){
+void MoveScreen::handleSelectingSpaceShipPhase(){
 	int c = getch();
 
-	//Select and place the boards
+	//Select a spaceship with the arrow keys
 	if(c == KEY_UP){
 		_gameData->board->moveSelection(Board::UP);
 	}else if(c == KEY_DOWN){
 		_gameData->board->moveSelection(Board::DOWN);
 	}else if(c == ' '){
-		_gameData->board->moveGrabbedShips();
-		_turnPhase++;
+		_gameData->board->moveSelectedSpaceShip();
+		checkMoving();
 	}
+}
 
+void MoveScreen::checkMoving(){
+	//No more ships left?
+	if(!_gameData->board->hasUnmovedSpaceShips()){
+		_turnPhase = MoveScreen::PHASE_END;
+		return;
+	}
+	//player must select spaceship?
+	if(_gameData->board->playerMustSelectSpaceShip()){
+		//Initialize the selection
+		_gameData->board->initSpaceShipSelection();
+
+		//Go to the selecting phase
+		_turnPhase = MoveScreen::PHASE_SELECTING_SPACESHIP;
+		return;
+	}
+	_gameData->board->moveGrabbedSpaceShips();
+	checkMoving();
 }
 
 void MoveScreen::handleEndPhase(){
@@ -126,5 +146,5 @@ void MoveScreen::nextScreen(){
 void MoveScreen::nextPlayer(){
 	Screen::nextPlayer();
 	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
-	_turnPhase = 0;
+	_turnPhase = MoveScreen::PHASE_BEGIN;
 }

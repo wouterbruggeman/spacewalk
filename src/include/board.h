@@ -18,16 +18,25 @@ class Board : public GameObject{
 		using GameObject::draw;
 		void drawAtPos(int x, int y, bool selected = false);
 		void setStatusMessage(string message);
-
 		void initBodies();
 		void resetSelection();
 		void moveSelection(int direction);
+		bool bodyIsPlanet(int index);
+		int calculateBodyIndex(int index);
+
+		//Place screen functions
 		bool placeSpaceShip(int index);
 
-		//Movement phase
-		bool grabSpaceShips();
-		void moveGrabbedShips();
+		//Movement screen functions
+		bool playerMustSelectSpaceShip();
+		void initSpaceShipSelection();
 
+		bool grabSpaceShips();
+		bool hasUnmovedSpaceShips();
+		int getAmountOfSameSizedSpaceShips();
+		void moveGrabbedSpaceShips();
+		void moveSelectedSpaceShip();
+		void moveSpaceShip(int index);
 
 		enum MoveDirection{
 			LEFT = 0,
@@ -42,8 +51,10 @@ class Board : public GameObject{
 		//Variables
 		string _statusMessage;
 
-		int _selectedBody;
+		int _selectedBodyIndex;
 		int _selectedSpaceShipIndex;
+		int _movedGrabbedShips;
+
 		GameObject *_bodies[AMOUNT_OF_BODIES];
 		vector<SpaceShip *> _grabbedSpaceShips;
 

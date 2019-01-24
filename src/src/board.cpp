@@ -19,16 +19,17 @@ void Board::initBodies(){
 	//Create planets and black holes.
 	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
 		//Every 7th instance is a blackhole
-		if((i % 7) == 0){
-			_bodies[i] = new BlackHole(_window);
-		}else{
+		if(bodyIsPlanet(i)){
 			_bodies[i] = new Planet(COLOR_WHITE_BLACK, COLOR_RED_BLACK, _window);
+		}else{
+			_bodies[i] = new BlackHole(_window);
 		}
 		//Set the location for the instance
 		_bodies[i]->setLocation(startX + (i * 2 * _bodies[i]->getSizeX()), startY);
 	}
 
 	//Reset to initialize
+	_movedGrabbedShips = 0;
 	resetSelection();
 }
 
@@ -37,7 +38,7 @@ void Board::drawAtPos(int x, int y, bool selected){
 	_window->addText(x + MARGIN_X, y + MARGIN_Y, _statusMessage);
 
 	for(int i = 0; i < AMOUNT_OF_BODIES; i++){
-		_bodies[i]->draw(_selectedBody == i);
+		_bodies[i]->draw(_selectedBodyIndex == i);
 	}
 }
 
@@ -47,22 +48,22 @@ void Board::setStatusMessage(string message){
 
 void Board::moveSelection(int direction){
 	if(direction == Board::RIGHT){
-		_selectedBody++;
-		if((_selectedBody % 7) == 0){
-			_selectedBody++;
+		_selectedBodyIndex++;
+		if((_selectedBodyIndex % 7) == 0){
+			_selectedBodyIndex++;
 		}
-		if(_selectedBody > AMOUNT_OF_BODIES){
-			_selectedBody = 1;
+		if(_selectedBodyIndex > AMOUNT_OF_BODIES){
+			_selectedBodyIndex = 1;
 		}
 		_selectedSpaceShipIndex = -1;
 
 	}else if(direction == Board::LEFT){
-		_selectedBody--;
-		if((_selectedBody % 7) == 0){
-			_selectedBody--;
+		_selectedBodyIndex--;
+		if((_selectedBodyIndex % 7) == 0){
+			_selectedBodyIndex--;
 		}
-		if(_selectedBody < 0){
-			_selectedBody = AMOUNT_OF_BODIES - 1;
+		if(_selectedBodyIndex < 0){
+			_selectedBodyIndex = AMOUNT_OF_BODIES - 1;
 		}
 		_selectedSpaceShipIndex = -1;
 
@@ -87,13 +88,20 @@ void Board::moveSelection(int direction){
 		}
 	}
 	//Get the selected Body which is always a planet
-	Planet *p = (Planet*) _bodies[_selectedBody];
+	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
 	p->selectSpaceShip(_selectedSpaceShipIndex);
+}
 
+bool Board::bodyIsPlanet(int index){
+	return ((index % 7) != 0);
+}
+
+int Board::calculateBodyIndex(int index){
+	return index % AMOUNT_OF_BODIES;
 }
 
 void Board::resetSelection(){
-	_selectedBody = 1;
+	_selectedBodyIndex = 1;
 	_selectedSpaceShipIndex = -1;
 }
 
@@ -101,8 +109,8 @@ bool Board::placeSpaceShip(int index){
 	SpaceShip *s = _gameData->activePlayer->getSpaceShip(index);
 
 	//Body is always a planet
-	Planet *p = (Planet*) _bodies[_selectedBody];
-	if(p->addSpaceShip(s)){
+	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
+	if(p->addSpaceShip(s, true)){
 		//Ship was placed
 		s->setState(SpaceShip::PLACED);
 		return true;
@@ -113,35 +121,93 @@ bool Board::placeSpaceShip(int index){
 	}
 }
 
+bool Board::playerMustSelectSpaceShip(){
+	return (getAmountOfSameSizedSpaceShips() > 1);
+}
+
+void Board::initSpaceShipSelection(){
+	//Set index to starting value
+	_selectedSpaceShipIndex = 0;
+
+	//Get the selected Body which is always a planet
+	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
+
+	//Show the selection
+	p->selectSpaceShip(_selectedSpaceShipIndex);
+}
+
 bool Board::grabSpaceShips(){
 	//Get the selected Body which is always a planet
-	Planet *p = (Planet*) _bodies[_selectedBody];
+	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
 
-	//If the planet contains spaceships:
+	//If the planet does not contain spaceships:
 	if(!p->containsSpaceShips()){
 		setStatusMessage((string)GRAB_FAIL_SHIPS + (string)SELECT_OTHER_PLANET);
 		return false;
 	}
+	//If the planet does not contain ships where the owner is the player
 	if(!p->containsSpaceShipsOfPlayer(_gameData->activePlayer)){
 		setStatusMessage((string)GRAB_FAIL_PLAYER + (string)SELECT_OTHER_PLANET);
 		return false;
 	}
 
-	//Select the first spaceship.
-	_selectedSpaceShipIndex = 0;
-	p->selectSpaceShip(_selectedSpaceShipIndex);
-
 	_grabbedSpaceShips = p->getSpaceShips();
-	setStatusMessage(GRAB_SUCCESS);
-
 	return true;
 }
 
-void Board::moveGrabbedShips(){
-	Planet *p = (Planet*) _bodies[_selectedBody];
-	//Do not show the selection anymore //TODO: make this more efficient
-	p->selectSpaceShip(-1);
+bool Board::hasUnmovedSpaceShips(){
+	return (_grabbedSpaceShips.size() != 0);
+}
 
-	//Reset the index
-	resetSelection();
+int Board::getAmountOfSameSizedSpaceShips(){
+	//Biggest spaceship is always at index 0
+	int size = _grabbedSpaceShips[0]->getSize();
+	int count = 0;
+
+	for(int i = 0; i < _grabbedSpaceShips.size(); i++){
+		if(_grabbedSpaceShips[i]->getSize() == size){
+			//If its the same size, increment the counter
+			count++;
+		}else{
+			//Other spaceship found. Return the counter
+			return count;
+		}
+	}
+	//Return 0 if the loop did not start
+	return count;
+}
+
+void Board::moveGrabbedSpaceShips(){
+
+}
+
+void Board::moveSelectedSpaceShip(){
+	moveSpaceShip(_selectedSpaceShipIndex);
+}
+
+void Board::moveSpaceShip(int index){
+	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
+
+	//Remove the spaceship from the current planet
+	p->removeSpaceShip(_grabbedSpaceShips[index]);
+
+	//Find the next body
+	int nextIndex = calculateBodyIndex(_selectedBodyIndex + ++_movedGrabbedShips);
+
+	//If the next body is a planet
+	if(bodyIsPlanet(nextIndex)){
+		//Get the planet
+		Planet *nextPlanet = (Planet*) _bodies[_selectedBodyIndex + _movedGrabbedShips];
+
+		//Add the spaceship to the planet
+		nextPlanet->addSpaceShip(_grabbedSpaceShips[index], false);
+	}else{
+		//Next body is a blackhole.
+
+		//Set the spaceship status to destroyed
+		_grabbedSpaceShips[index]->setState(SpaceShip::DESTROYED);
+
+		//Remove the spaceship from the grabbed ships list
+		_grabbedSpaceShips.erase(_grabbedSpaceShips.begin() + index);
+	}
 }

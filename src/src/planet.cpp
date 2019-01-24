@@ -19,13 +19,34 @@ void Planet::drawAtPos(int x, int y, bool selected){
 	}
 }
 
-bool Planet::addSpaceShip(SpaceShip *s){
-	//TODO: only check the line below in the movement phase
-	if(vectorContainsShipType(s)){
+bool Planet::addSpaceShip(SpaceShip *s, bool placementPhase){
+	//If in the placementphase and the vector already contains this type
+	if(placementPhase && vectorContainsShipType(s)){
 		return false;
 	}
+
+	//Start at the largest spaceship
+	for(int i = 0; i < _spaceShips.size(); i++){
+		//spaceship is bigger than the current spaceship at i
+		if(s->getSize() > _spaceShips[i]->getSize()){
+			//Insert before current spaceship
+			_spaceShips.insert(_spaceShips.begin() + i, s);
+			return true;
+		}
+	}
+	//Spaceship was not placed. Push to the last element
 	_spaceShips.push_back(s);
 	return true;
+}
+
+void Planet::removeSpaceShip(SpaceShip *s){
+	//Find index
+	for(int i = 0; i < _spaceShips.size(); i++){
+		if(s == _spaceShips[i]){
+			//Remove the ship
+			_spaceShips.erase(_spaceShips.begin() + i);
+		}
+	}
 }
 
 bool Planet::containsSpaceShips(){

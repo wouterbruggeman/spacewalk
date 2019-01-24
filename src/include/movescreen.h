@@ -13,22 +13,23 @@ class MoveScreen : public Screen{
 		void handleInput();
 
 		enum TurnPhases{
-			BEGIN = 0,
-			SELECTING = 1,
-			MOVING = 2,
-			END = 3
+			PHASE_BEGIN = 0,
+			PHASE_SELECTING_PLANET = 1,
+			PHASE_SELECTING_SPACESHIP = 2,
+			PHASE_END = 3
 		};
 
 	private:
 		//Functions
-
 		//TurnPhases
 		void handleBeginPhase();
-		void handleSelectingPhase();
-		void handleMovingPhase();
+		void handleSelectingPlanetPhase();
+		void handleSelectingSpaceShipPhase();
 		void handleEndPhase();
 
 		//Other functions
+		void checkMoving();
+
 		bool playerSkipsTurn();
 		void nextScreen();
 		void nextPlayer();

@@ -12,11 +12,12 @@ class Planet : public GameObject{
 		using GameObject::draw;
 		void drawAtPos(int x, int y, bool selected = false);
 
-		bool addSpaceShip(SpaceShip *s);
+		bool addSpaceShip(SpaceShip *s, bool placementPhase);
 		void removeSpaceShip(SpaceShip *s);
 
 		bool containsSpaceShips();
 		bool containsSpaceShipsOfPlayer(Player *p);
+		//int getBiggestSpaceShipCount();
 		vector<SpaceShip *> getSpaceShips();
 
 		void selectSpaceShip(int index);
