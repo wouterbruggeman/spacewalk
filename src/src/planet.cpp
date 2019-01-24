@@ -39,14 +39,9 @@ bool Planet::addSpaceShip(SpaceShip *s, bool placementPhase){
 	return true;
 }
 
-void Planet::removeSpaceShip(SpaceShip *s){
-	//Find index
-	for(int i = 0; i < _spaceShips.size(); i++){
-		if(s == _spaceShips[i]){
-			//Remove the ship
-			_spaceShips.erase(_spaceShips.begin() + i);
-		}
-	}
+void Planet::removeSpaceShip(int index){
+	//Remove the ship
+	_spaceShips.erase(_spaceShips.begin() + index);
 }
 
 bool Planet::containsSpaceShips(){
@@ -67,6 +62,18 @@ vector<SpaceShip *> Planet::getSpaceShips(){
 	return _spaceShips;
 }
 
+SpaceShip * Planet::getSpaceShip(int index){
+	return _spaceShips[index];
+}
+
+int Planet::getSpaceShipsCount(){
+	return _spaceShips.size();
+}
+
+void Planet::selectSpaceShip(int index){
+	_selectedSpaceShipIndex = index;
+}
+
 //returns true if vector already contains ship with size and owner, otherwise false
 bool Planet::vectorContainsShipType(SpaceShip *s){
 	for(int i = 0; i < _spaceShips.size(); i++){
@@ -75,8 +82,4 @@ bool Planet::vectorContainsShipType(SpaceShip *s){
 		}
 	}
 	return false;
-}
-
-void Planet::selectSpaceShip(int index){
-	_selectedSpaceShipIndex = index;
 }

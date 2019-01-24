@@ -23,9 +23,9 @@
 #define PLACE_FAIL "This ship could not be placed on this planet. "
 #define YOUR_TURN "It's your turn, "
 
-#define GRAB_SUCCESS "Please select the spaceship that should be moved first with your arrow keys."
-#define GRAB_FAIL_SHIPS "No spaceships have landed on this planet yet."
-#define GRAB_FAIL_PLAYER "Your spaceships haven't landed on this planet yet. "
+#define SELECT_SUCCESS "Please select the spaceship that should be moved first with your arrow keys."
+#define SELECT_FAIL_SHIPS "No spaceships have landed on this planet yet."
+#define SELECT_FAIL_PLAYER "Your spaceships haven't landed on this planet yet. "
 
 #define SELECT_OTHER_PLANET "Please select another planet. "
 

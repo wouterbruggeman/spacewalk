@@ -13,12 +13,14 @@ class Planet : public GameObject{
 		void drawAtPos(int x, int y, bool selected = false);
 
 		bool addSpaceShip(SpaceShip *s, bool placementPhase);
-		void removeSpaceShip(SpaceShip *s);
+		void removeSpaceShip(int index);
 
 		bool containsSpaceShips();
 		bool containsSpaceShipsOfPlayer(Player *p);
-		//int getBiggestSpaceShipCount();
+
 		vector<SpaceShip *> getSpaceShips();
+		SpaceShip *getSpaceShip(int index);
+		int getSpaceShipsCount();
 
 		void selectSpaceShip(int index);
 

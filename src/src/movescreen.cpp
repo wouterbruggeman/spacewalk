@@ -71,7 +71,7 @@ void MoveScreen::handleSelectingPlanetPhase(){
 	}else if(c == KEY_LEFT){
 		_gameData->board->moveSelection(Board::LEFT);
 	}else if(c == ' '){
-		if(_gameData->board->grabSpaceShips()){
+		if(_gameData->board->selectPlanet()){
 			checkMoving();
 		}
 	}
@@ -106,7 +106,7 @@ void MoveScreen::checkMoving(){
 		_turnPhase = MoveScreen::PHASE_SELECTING_SPACESHIP;
 		return;
 	}
-	_gameData->board->moveGrabbedSpaceShips();
+	_gameData->board->moveSpaceShipsFromSelectedPlanet();
 	checkMoving();
 }
 

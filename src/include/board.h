@@ -31,10 +31,10 @@ class Board : public GameObject{
 		bool playerMustSelectSpaceShip();
 		void initSpaceShipSelection();
 
-		bool grabSpaceShips();
+		bool selectPlanet();
 		bool hasUnmovedSpaceShips();
 		int getAmountOfSameSizedSpaceShips();
-		void moveGrabbedSpaceShips();
+		void moveSpaceShipsFromSelectedPlanet();
 		void moveSelectedSpaceShip();
 		void moveSpaceShip(int index);
 
@@ -53,10 +53,10 @@ class Board : public GameObject{
 
 		int _selectedBodyIndex;
 		int _selectedSpaceShipIndex;
-		int _movedGrabbedShips;
+		int _movedShips;
 
 		GameObject *_bodies[AMOUNT_OF_BODIES];
-		vector<SpaceShip *> _grabbedSpaceShips;
+		//vector<SpaceShip *> _grabbedSpaceShips;
 
 		//Pointer to gamedata
 		GameData *_gameData;
