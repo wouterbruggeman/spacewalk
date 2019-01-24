@@ -198,6 +198,7 @@ void Board::moveSelectedSpaceShip(){
 }
 
 void Board::moveSpaceShip(int index){
+	//Get the current planet
 	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
 
 
@@ -206,8 +207,8 @@ void Board::moveSpaceShip(int index){
 
 	//If the next body is a planet
 	if(bodyIsPlanet(nextIndex)){
-		//Get the planet
-		Planet *nextPlanet = (Planet*) _bodies[_selectedBodyIndex + _movedShips];
+		//Get the next planet
+		Planet *nextPlanet = (Planet*) _bodies[nextIndex];
 
 		//Add the spaceship to the planet
 		nextPlanet->addSpaceShip(p->getSpaceShip(index), false);
