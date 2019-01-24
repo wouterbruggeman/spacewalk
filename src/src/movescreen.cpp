@@ -128,7 +128,7 @@ bool MoveScreen::playerSkipsTurn(){
 	}
 
 	_popup->clearMessage();
-	_popup->setMessage(PLAYER_OPTIONS_SKIP, 0);
+	_popup->setMessage(_gameData->activePlayer->getName() + PLAYER_OPTIONS_SKIP, 0);
 	_popup->setMessage(PLAYER_OPTIONS_COST +
 		to_string(chips) + PLAYER_OPTIONS_CHIPS, 1);
 
@@ -153,7 +153,7 @@ bool MoveScreen::playerGetsNewTurn(){
 	}
 
 	_popup->clearMessage();
-	_popup->setMessage(PLAYER_OPTIONS_NEW_TURN, 0);
+	_popup->setMessage(_gameData->activePlayer->getName() + PLAYER_OPTIONS_NEW_TURN, 0);
 	_popup->setMessage(PLAYER_OPTIONS_COST +
 		to_string(chips) + PLAYER_OPTIONS_CHIPS, 1);
 

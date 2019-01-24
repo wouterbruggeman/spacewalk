@@ -29,8 +29,8 @@
 
 #define SELECT_OTHER_PLANET "Please select another planet. "
 
-#define PLAYER_OPTIONS_SKIP "Would you like to skip your turn?"
-#define PLAYER_OPTIONS_NEW_TURN "Would you like to get another turn?"
+#define PLAYER_OPTIONS_SKIP ", would you like to skip your turn?"
+#define PLAYER_OPTIONS_NEW_TURN ", would you like to get another turn?"
 #define PLAYER_OPTIONS_COST "This will cost 1 Chip. You currently have "
 #define PLAYER_OPTIONS_CHIPS " chips."
 
@@ -54,6 +54,6 @@
 #define STAR_2 "."
 
 #define INFO_AUTHOR "Wouter Bruggeman"
-#define INFO_VERSION "Spacewalk v0.2.1"
+#define INFO_VERSION "Spacewalk v0.3.0"
 
 #endif
