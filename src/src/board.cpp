@@ -33,6 +33,11 @@ void Board::initBodies(){
 	resetSelection();
 }
 
+void Board::resetSelection(){
+	_selectedBodyIndex = 1;
+	_selectedSpaceShipIndex = -1;
+}
+
 void Board::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x, y);
 	_window->addText(x + MARGIN_X, y + MARGIN_Y, _statusMessage);
@@ -48,23 +53,11 @@ void Board::setStatusMessage(string message){
 
 void Board::moveSelection(int direction){
 	if(direction == Board::RIGHT){
-		_selectedBodyIndex++;
-		if((_selectedBodyIndex % 7) == 0){
-			_selectedBodyIndex++;
-		}
-		if(_selectedBodyIndex > AMOUNT_OF_BODIES){
-			_selectedBodyIndex = 1;
-		}
+		_selectedBodyIndex = getNextPlanetIndex(_selectedBodyIndex);
 		_selectedSpaceShipIndex = -1;
 
 	}else if(direction == Board::LEFT){
-		_selectedBodyIndex--;
-		if((_selectedBodyIndex % 7) == 0){
-			_selectedBodyIndex--;
-		}
-		if(_selectedBodyIndex < 0){
-			_selectedBodyIndex = AMOUNT_OF_BODIES - 1;
-		}
+		_selectedBodyIndex = getPreviousPlanetIndex(_selectedBodyIndex);
 		_selectedSpaceShipIndex = -1;
 
 	}else if(direction == Board::UP){
@@ -95,19 +88,6 @@ void Board::moveSelection(int direction){
 	//Get the selected Body which is always a planet
 	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
 	p->selectSpaceShip(_selectedSpaceShipIndex);
-}
-
-bool Board::bodyIsPlanet(int index){
-	return ((index % 7) != 0);
-}
-
-int Board::calculateBodyIndex(int index){
-	return index % AMOUNT_OF_BODIES;
-}
-
-void Board::resetSelection(){
-	_selectedBodyIndex = 1;
-	_selectedSpaceShipIndex = -1;
 }
 
 bool Board::placeSpaceShip(int index){
@@ -221,4 +201,33 @@ void Board::moveSpaceShip(int index){
 
 	//Remove the spaceship from the current planet
 	p->removeSpaceShip(index);
+}
+
+bool Board::bodyIsPlanet(int index){
+	return ((index % 7) != 0);
+}
+
+int Board::calculateBodyIndex(int index){
+	int ret = index % AMOUNT_OF_BODIES;
+	if(ret < 0){
+		ret+=AMOUNT_OF_BODIES;
+	}
+	return ret;
+
+}
+
+int Board::getNextPlanetIndex(int index){
+	index = calculateBodyIndex(++index);
+	if(!bodyIsPlanet(index)){
+		return getNextPlanetIndex(index);
+	}
+	return index;
+}
+
+int Board::getPreviousPlanetIndex(int index){
+	index = calculateBodyIndex(--index);
+	if(!bodyIsPlanet(index)){
+		return getPreviousPlanetIndex(index);
+	}
+	return index;
 }

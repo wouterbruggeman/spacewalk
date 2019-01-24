@@ -21,8 +21,6 @@ class Board : public GameObject{
 		void initBodies();
 		void resetSelection();
 		void moveSelection(int direction);
-		bool bodyIsPlanet(int index);
-		int calculateBodyIndex(int index);
 
 		//Place screen functions
 		bool placeSpaceShip(int index);
@@ -47,6 +45,10 @@ class Board : public GameObject{
 		};
 
 	private:
+		bool bodyIsPlanet(int index);
+		int calculateBodyIndex(int index);
+		int getNextPlanetIndex(int index);
+		int getPreviousPlanetIndex(int index);
 
 		//Variables
 		string _statusMessage;

@@ -29,8 +29,6 @@ void MoveScreen::draw(){
 	//Draw the other elements
 	_gameData->board->draw();
 	_gameData->playerView->draw();
-
-	_window->addText(MARGIN_X, MARGIN_Y + 8, "DEBUG Turn phase: " + to_string(_turnPhase));
 }
 
 void MoveScreen::handleInput(){
