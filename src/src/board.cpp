@@ -175,12 +175,14 @@ void Board::moveSpaceShipsFromSelectedPlanet(){
 
 void Board::moveSelectedSpaceShip(){
 	moveSpaceShip(_selectedSpaceShipIndex);
+
+	//Reset the selected index
+	_selectedSpaceShipIndex = -1;
 }
 
 void Board::moveSpaceShip(int index){
 	//Get the current planet
 	Planet *p = (Planet*) _bodies[_selectedBodyIndex];
-
 
 	//Find the next body
 	int nextIndex = calculateBodyIndex(_selectedBodyIndex + ++_movedShips);
@@ -201,6 +203,7 @@ void Board::moveSpaceShip(int index){
 
 	//Remove the spaceship from the current planet
 	p->removeSpaceShip(index);
+	p->selectSpaceShip(-1);
 }
 
 bool Board::bodyIsPlanet(int index){
