@@ -84,6 +84,7 @@ bool PlaceScreen::playersHaveUnplacedShips(){
 void PlaceScreen::nextScreen(){
 	//Switch the screen
 	_gameData->currentScreen = new MoveScreen(_gameData, _window);
+	delete this;
 }
 
 void PlaceScreen::nextPlayer(){

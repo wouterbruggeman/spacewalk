@@ -185,6 +185,7 @@ bool MoveScreen::playerGetsNewTurn(){
 }
 
 void MoveScreen::nextScreen(){
+	delete this;
 	_gameData->currentScreen = new EndScreen(_gameData, _window);
 }
 

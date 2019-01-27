@@ -58,5 +58,7 @@ void WelcomeScreen::handleInput(){
 }
 
 void WelcomeScreen::nextScreen(){
+	//Switch the screen
 	_gameData->currentScreen = new PlaceScreen(_gameData, _window);
+	delete this;
 }

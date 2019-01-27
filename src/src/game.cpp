@@ -58,9 +58,10 @@ int Game::loop(){
 	int status = Game::WAIT;
 
 	//If the end screen is the active screen
-	if(EndScreen *endScreen = dynamic_cast<EndScreen*>(_gameData->currentScreen)){
+	EndScreen *currentScreen;
+	if(currentScreen = dynamic_cast<EndScreen*>(_gameData->currentScreen)){
 		//Check the status of the endscreen
-		status = endScreen->getStatus();
+		status = currentScreen->getStatus();
 	}
 	return status;
 }
