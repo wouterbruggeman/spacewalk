@@ -88,3 +88,19 @@ int Player::getTotalDestroyedSpaceShips(){
 	}
 	return total;
 }
+
+int Player::getScore(){
+	int score = 0;
+
+	//If there are chips:
+	if(getChips() > 0){
+		score += 2;
+	}
+
+	for(int i = 0; i < SPACESHIP_AMOUNT; i++){
+		if(_spaceShips[i]->getState() == SpaceShip::PLACED){
+			score += _spaceShips[i]->getSize();
+		}
+	}
+	return score;
+}

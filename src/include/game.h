@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "welcomescreen.h"
+#include "endscreen.h"
 #include "gamedata.h"
 
 class Game{
@@ -11,8 +12,13 @@ class Game{
 
 		void start();
 		void stop();
-		void loop();
-		bool isRunning();
+		int loop();
+
+		enum ExitStatus{
+			WAIT = -1,
+			EXIT = 0,
+			RESTART = 1
+		};
 
 	private:
 		//Functions
@@ -20,9 +26,7 @@ class Game{
 		void draw();
 
 		//Variables
-		bool _isRunning = true;
 		Window *_window;
-
 		GameData *_gameData;
 };
 #endif

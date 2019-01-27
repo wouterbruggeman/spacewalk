@@ -35,6 +35,8 @@ class Player : public GameObject{
 		int getTopUnplacedSpaceShipIndex();
 		int getTotalDestroyedSpaceShips();
 
+		int getScore();
+
 	private:
 		//Variables
 		string _name;

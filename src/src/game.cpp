@@ -29,7 +29,7 @@ Game::Game(){
 	_gameData->board->initBodies();
 
 	//Create screen
-	_gameData->currentScreen = new WelcomeScreen(_gameData, _window);
+	_gameData->currentScreen = new EndScreen(_gameData, _window);
 }
 
 Game::~Game(){
@@ -49,16 +49,20 @@ void Game::start(){
 
 void Game::stop(){
 	_window->stop();
-	_isRunning = false;
 }
 
-void Game::loop(){
+int Game::loop(){
 	this->handleKeyboardInput();
 	this->draw();
-}
 
-bool Game::isRunning(){
-	return _isRunning;
+	int status = Game::WAIT;
+
+	//If the end screen is the active screen
+	if(EndScreen *endScreen = dynamic_cast<EndScreen*>(_gameData->currentScreen)){
+		//Check the status of the endscreen
+		status = endScreen->getStatus();
+	}
+	return status;
 }
 
 void Game::handleKeyboardInput(){

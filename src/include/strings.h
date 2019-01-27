@@ -1,10 +1,14 @@
 #ifndef STRINGS_H
 #define STRINGS_H
 
-#define WELCOME_MAIN_STR "Welcome to spacewalk!"
-#define WELCOME_SUB_STR "Press the spacebar to continue.."
+#define WELCOME_MAIN "Welcome to spacewalk!"
 #define WELCOME_ENTER_NAME_1 "Please enter your name (Player 1):"
 #define WELCOME_ENTER_NAME_2 "Please enter the name of Player 2:"
+
+#define END_MAIN_1 "Congratulations "
+#define END_MAIN_2 "! You've won the game!"
+#define END_SCORE_1 "Your score: "
+#define END_SCORE_2 "Spaceships left: "
 
 #define PLACE_INFO_1 "In this phase you'll have to place your spaceships on the planets."
 #define PLACE_INFO_2 "You'll start with your biggest spaceship, which can be seen in the "
@@ -35,6 +39,8 @@
 #define PLAYER_OPTIONS_CHIPS " chips."
 
 #define POPUP_BOOL_ANSWERS "Press Y for Yes and N for No."
+#define NEW_GAME_QUESTION "Would you like to start a new game?"
+#define CONTINUE_INFO "Press the spacebar to continue.."
 
 #define SHIPVIEW_TITLE "Spaceships:"
 #define PLAYERVIEW_TITLE "Players:"
@@ -54,6 +60,6 @@
 #define STAR_2 "."
 
 #define INFO_AUTHOR "Wouter Bruggeman"
-#define INFO_VERSION "Spacewalk v0.3.0"
+#define INFO_VERSION "Spacewalk v0.4.0"
 
 #endif
