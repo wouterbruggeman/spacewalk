@@ -207,4 +207,5 @@ void MoveScreen::nextPlayer(){
 	Screen::nextPlayer();
 	_secondTurn = false;
 	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
+	_gameData->board->resetSelection();
 }

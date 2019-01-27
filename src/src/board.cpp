@@ -35,7 +35,6 @@ void Board::initBodies(){
 
 void Board::resetSelection(){
 	_selectedBodyIndex = 1;
-	_selectedSpaceShipIndex = -1;
 }
 
 void Board::drawAtPos(int x, int y, bool selected){
