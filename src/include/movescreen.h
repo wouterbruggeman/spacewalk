@@ -39,7 +39,8 @@ class MoveScreen : public Screen{
 
 		//Variables
 		Popup *_popup;
-		int _turnPhase = 0;
+		int _turnPhase;
+		bool _secondTurn;
 
 };
 #endif

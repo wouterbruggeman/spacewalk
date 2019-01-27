@@ -8,6 +8,7 @@ MoveScreen::MoveScreen(GameData *gameData, Window *window) : Screen(gameData, wi
 	);
 	_popup = new Popup(_window);
 	_turnPhase = 0;
+	_secondTurn = false;
 }
 
 MoveScreen::~MoveScreen(){
@@ -98,6 +99,7 @@ void MoveScreen::handleEndPhase(){
 		nextPlayer();
 	}
 
+
 	//Always start a new phase
 	_turnPhase = MoveScreen::PHASE_BEGIN;
 }
@@ -136,6 +138,10 @@ void MoveScreen::checkForWinner(){
 }
 
 bool MoveScreen::playerSkipsTurn(){
+	if(_secondTurn){
+		return false;
+	}
+
 	//Get amount of chips
 	int chips = _gameData->activePlayer->getChips();
 
@@ -161,6 +167,10 @@ bool MoveScreen::playerSkipsTurn(){
 }
 
 bool MoveScreen::playerGetsNewTurn(){
+	if(_secondTurn){
+		return false;
+	}
+
 	//Get amount of chips
 	int chips = _gameData->activePlayer->getChips();
 
@@ -178,6 +188,10 @@ bool MoveScreen::playerGetsNewTurn(){
 	if(_popup->getBool()){
 		//Decrement the amount of chips the player has.
 		_gameData->activePlayer->setChips(--chips);
+
+		//Set to true. The player cannot get another turn.
+		_secondTurn = true;
+
 		return true;
 	}
 
@@ -191,5 +205,6 @@ void MoveScreen::nextScreen(){
 
 void MoveScreen::nextPlayer(){
 	Screen::nextPlayer();
+	_secondTurn = false;
 	_gameData->board->setStatusMessage(YOUR_TURN + _gameData->activePlayer->getName());
 }
