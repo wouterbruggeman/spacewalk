@@ -29,7 +29,7 @@ Game::Game(){
 	_gameData->board->initBodies();
 
 	//Create screen
-	_gameData->currentScreen = new EndScreen(_gameData, _window);
+	_gameData->currentScreen = new WelcomeScreen(_gameData, _window);
 }
 
 Game::~Game(){

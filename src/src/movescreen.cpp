@@ -48,6 +48,9 @@ void MoveScreen::handleInput(){
 		default:
 			break;
 	}
+
+	//Check if there is a winner after handling the input
+	checkForWinner();
 }
 
 void MoveScreen::handleBeginPhase(){
@@ -89,6 +92,16 @@ void MoveScreen::handleSelectingSpaceShipPhase(){
 	}
 }
 
+void MoveScreen::handleEndPhase(){
+	if(!playerGetsNewTurn()){
+		//Switch player
+		nextPlayer();
+	}
+
+	//Always start a new phase
+	_turnPhase = MoveScreen::PHASE_BEGIN;
+}
+
 void MoveScreen::checkMoving(){
 	//No more ships left?
 	if(!_gameData->board->hasUnmovedSpaceShips()){
@@ -108,14 +121,18 @@ void MoveScreen::checkMoving(){
 	checkMoving();
 }
 
-void MoveScreen::handleEndPhase(){
-	if(!playerGetsNewTurn()){
-		//Switch player
-		nextPlayer();
+void MoveScreen::checkForWinner(){
+	if(_gameData->p1->getTotalDestroyedSpaceShips() == SPACESHIP_AMOUNT){
+		_gameData->activePlayer = _gameData->p2;
+		nextScreen();
+		return;
 	}
-
-	//Always start a new phase
-	_turnPhase = MoveScreen::PHASE_BEGIN;
+	if(_gameData->p2->getTotalDestroyedSpaceShips() == SPACESHIP_AMOUNT){
+		_gameData->activePlayer = _gameData->p1;
+		nextScreen();
+		return;
+	}
+	return;
 }
 
 bool MoveScreen::playerSkipsTurn(){
@@ -168,7 +185,7 @@ bool MoveScreen::playerGetsNewTurn(){
 }
 
 void MoveScreen::nextScreen(){
-	//_gameData->currentScreen = new EndScreen(_gameData, _window);
+	_gameData->currentScreen = new EndScreen(_gameData, _window);
 }
 
 void MoveScreen::nextPlayer(){

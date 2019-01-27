@@ -4,6 +4,7 @@
 #include "screen.h"
 #include "string.h"
 #include "popup.h"
+#include "endscreen.h"
 
 class MoveScreen : public Screen{
 	public:
@@ -29,6 +30,7 @@ class MoveScreen : public Screen{
 
 		//Other functions
 		void checkMoving();
+		void checkForWinner();
 
 		bool playerSkipsTurn();
 		bool playerGetsNewTurn();
