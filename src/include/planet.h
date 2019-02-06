@@ -26,7 +26,6 @@ class Planet : public GameObject{
 
 	private:
 		bool vectorContainsShipType(SpaceShip *s);
-		void sortSpaceShips();
 		vector<SpaceShip *> _spaceShips;
 
 		int _selectedSpaceShipIndex;

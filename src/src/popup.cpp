@@ -11,7 +11,7 @@ Popup::Popup(Window *window) : GameObject(window){
 void Popup::drawAtPos(int x, int y, bool selected){
 	this->drawBorder(x,y);
 	for(int i = 0; i < MESSAGE_SIZE_Y; i++){
-		_window->addText(x + 1, y + 1 + i, _message[i]);
+		_window->addText(x + 2, y + 1 + i, _message[i]);
 	}
 }
 
@@ -27,7 +27,7 @@ void Popup::clearMessage(){
 
 string Popup::getString(int x, int y, int n){
 	return _window->getString(
-		_posX + x,
+		_posX + 1+ x,
 		_posY + y,
 		n
 	);
@@ -35,7 +35,7 @@ string Popup::getString(int x, int y, int n){
 
 bool Popup::getBool(){
 	this->draw();
-	_window->addText(_posX + 1, _posY + (POPUP_SIZE_Y - 2), POPUP_BOOL_ANSWERS);
+	_window->addText(_posX + 2, _posY + (POPUP_SIZE_Y - 2), POPUP_BOOL_ANSWERS);
 
 	char answer = getch();
 

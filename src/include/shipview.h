@@ -22,6 +22,5 @@ class ShipView : public GameObject{
 
 		//Variables
 		GameData *_gameData;
-
 };
 #endif
